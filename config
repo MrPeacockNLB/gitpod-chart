@@ -1,0 +1,5 @@
+# Kubernetes Namespace                                                                                                                                                                                                                     ▲
+NAMESPACE="gitpod"
+
+# Deploy to this Domain
+DOMAIN="gitpod.devops.hub.cloud.ilab-nlb.de"
