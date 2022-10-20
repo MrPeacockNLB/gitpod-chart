@@ -4,7 +4,7 @@
 source config
 
 # remove all files
-rm -rf tmp; mkdir tmp
+rm -rf tmp; mkdir -p tmp/gitpod
 rm -rf manifests/gitpod; mkdir -p manifests/gitpod
 
 # GitPods installer initial config.yaml
@@ -41,3 +41,18 @@ kubectl create secret generic ssh-gateway-host-key -n $NAMESPACE --from-file=tmp
 
 # append configuration settings for SSH gateway
 yq e -i '.sshGatewayHostKey.kind = "secret" | .sshGatewayHostKey.name = "ssh-gateway-host-key"' $CFG
+
+# render manifests and create copy for diffing
+gitpod-installer render --use-experimental-config --config $CFG --output-split-files tmp/gitpod -n $NAMESPACE
+for f in tmp/gitpod/*.yaml; do yq -i '.' "$f"; done
+cp -r tmp/gitpod tmp/org
+
+#
+# remove all node selectors
+#
+for f in tmp/gitpod/*.yaml; do yq -i '(del .spec.template.spec.affinity)' "$f"; done
+
+# dump diff
+
+# finaly copy files
+cp -r tmp/gitpod manifests
