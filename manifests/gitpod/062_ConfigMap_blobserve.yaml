@@ -14,32 +14,32 @@ data:
               {
                 "path": "/ide/out/vs/workbench/workbench.web.api.js",
                 "search": "vscode-cdn.net",
-                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+                "replacement": "gitpod.central.dev.cloud.ilab-nlb.de"
               },
               {
                 "path": "/ide/out/vs/workbench/workbench.web.main.js",
                 "search": "vscode-cdn.net",
-                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+                "replacement": "gitpod.central.dev.cloud.ilab-nlb.de"
               },
               {
                 "path": "/ide/out/vs/workbench/services/extensions/worker/extensionHostWorker.js",
                 "search": "vscode-cdn.net",
-                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+                "replacement": "gitpod.central.dev.cloud.ilab-nlb.de"
               },
               {
                 "path": "/ide/out/vs/workbench/workbench.web.api.js",
                 "search": "open-vsx.org",
-                "replacement": "open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de"
+                "replacement": "open-vsx.gitpod.central.dev.cloud.ilab-nlb.de"
               },
               {
                 "path": "/ide/out/vs/workbench/workbench.web.main.js",
                 "search": "open-vsx.org",
-                "replacement": "open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de"
+                "replacement": "open-vsx.gitpod.central.dev.cloud.ilab-nlb.de"
               },
               {
                 "path": "/ide/out/vs/workbench/workbench.web.main.js",
                 "search": "ide.gitpod.io/code/markeplace.json",
-                "replacement": "ide.gitpod.devops.hub.cloud.ilab-nlb.de/code/marketplace.json"
+                "replacement": "ide.gitpod.central.dev.cloud.ilab-nlb.de/code/marketplace.json"
               }
             ],
             "inlineStatic": [

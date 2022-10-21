@@ -43,13 +43,13 @@ spec:
       containers:
         - env:
             - name: GITPOD_DOMAIN
-              value: gitpod.devops.hub.cloud.ilab-nlb.de
+              value: gitpod.central.dev.cloud.ilab-nlb.de
             - name: GITPOD_INSTALLATION_SHORTNAME
               value: default
             - name: GITPOD_REGION
               value: local
             - name: HOST_URL
-              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+              value: https://gitpod.central.dev.cloud.ilab-nlb.de
             - name: KUBE_NAMESPACE
               valueFrom:
                 fieldRef:

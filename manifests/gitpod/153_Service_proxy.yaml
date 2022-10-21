@@ -5,7 +5,7 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/neg: '{"exposed_ports": {"80":{},"443": {}}}'
-    external-dns.alpha.kubernetes.io/hostname: gitpod.devops.hub.cloud.ilab-nlb.de,*.gitpod.devops.hub.cloud.ilab-nlb.de,*.ws.gitpod.devops.hub.cloud.ilab-nlb.de
+    external-dns.alpha.kubernetes.io/hostname: gitpod.central.dev.cloud.ilab-nlb.de,*.gitpod.central.dev.cloud.ilab-nlb.de,*.ws.gitpod.central.dev.cloud.ilab-nlb.de
   creationTimestamp: null
   labels:
     app: gitpod

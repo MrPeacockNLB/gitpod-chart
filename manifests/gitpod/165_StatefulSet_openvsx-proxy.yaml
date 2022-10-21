@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 23cd08b18c706a2d847297e07a5c18060622d018abc4dc426145e552cc82a8fe
+        gitpod.io/checksum_config: f630b9f744f7a7eeadc9a5fe6ab60e057cdfc9c3d394b7dc2711dc1f10842303
       creationTimestamp: null
       labels:
         app: gitpod
@@ -41,13 +41,13 @@ spec:
             - /config/config.json
           env:
             - name: GITPOD_DOMAIN
-              value: gitpod.devops.hub.cloud.ilab-nlb.de
+              value: gitpod.central.dev.cloud.ilab-nlb.de
             - name: GITPOD_INSTALLATION_SHORTNAME
               value: default
             - name: GITPOD_REGION
               value: local
             - name: HOST_URL
-              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+              value: https://gitpod.central.dev.cloud.ilab-nlb.de
             - name: KUBE_NAMESPACE
               valueFrom:
                 fieldRef:

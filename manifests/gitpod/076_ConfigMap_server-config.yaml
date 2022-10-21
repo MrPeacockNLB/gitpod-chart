@@ -5,7 +5,7 @@ data:
   config.json: |-
     {
       "version": "release-2022.09.2.3",
-      "hostUrl": "https://gitpod.devops.hub.cloud.ilab-nlb.de",
+      "hostUrl": "https://gitpod.central.dev.cloud.ilab-nlb.de",
       "installationShortname": "default",
       "devBranch": "",
       "insecureNoDomain": false,
@@ -23,7 +23,7 @@ data:
       "imageBuilderAddr": "image-builder-mk3.gitpod.svc.cluster.local:8080",
       "usageServiceAddr": "usage.gitpod.svc.cluster.local:9001",
       "maximumEventLoopLag": 0.35,
-      "vsxRegistryUrl": "https://open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de",
+      "vsxRegistryUrl": "https://open-vsx.gitpod.central.dev.cloud.ilab-nlb.de",
       "chargebeeProviderOptionsFile": "/chargebee/providerOptions",
       "stripeSecretsFile": "/stripe-secret/apikeys",
       "stripeConfigFile": "/stripe-config/config",
@@ -78,7 +78,7 @@ data:
       },
       "oauthServer": {
         "enabled": true,
-        "jwtSecret": "gnBRC_FDYFt-yYDATSoq"
+        "jwtSecret": "1hBptVEKS7PuUVFtUero"
       },
       "rateLimiter": {
         "groups": {

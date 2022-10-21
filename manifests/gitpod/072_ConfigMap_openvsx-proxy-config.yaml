@@ -8,7 +8,7 @@ data:
       "cache_duration_regular": "5m0s",
       "cache_duration_backup": "72h0m0s",
       "url_upstream": "https://open-vsx.org",
-      "url_local": "https://open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de",
+      "url_local": "https://open-vsx.gitpod.central.dev.cloud.ilab-nlb.de",
       "max_idle_conns": 1000,
       "max_idle_conns_per_host": 1000,
       "redis_addr": "localhost:6379",

@@ -5,7 +5,7 @@ data:
   config.json: |-
     {
       "gitpodAPI": {
-        "hostURL": "https://gitpod.devops.hub.cloud.ilab-nlb.de",
+        "hostURL": "https://gitpod.central.dev.cloud.ilab-nlb.de",
         "apiToken": ""
       },
       "enforcement": {},

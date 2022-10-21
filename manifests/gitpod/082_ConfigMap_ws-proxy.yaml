@@ -22,14 +22,14 @@ data:
         },
         "blobServer": {
           "scheme": "https",
-          "host": "ide.gitpod.devops.hub.cloud.ilab-nlb.de",
+          "host": "ide.gitpod.central.dev.cloud.ilab-nlb.de",
           "pathPrefix": "/blobserve"
         },
         "gitpodInstallation": {
           "scheme": "https",
-          "hostName": "gitpod.devops.hub.cloud.ilab-nlb.de",
-          "workspaceHostSuffix": ".ws.gitpod.devops.hub.cloud.ilab-nlb.de",
-          "workspaceHostSuffixRegex": "\\.ws[^\\.]*\\.gitpod.devops.hub.cloud.ilab-nlb.de"
+          "hostName": "gitpod.central.dev.cloud.ilab-nlb.de",
+          "workspaceHostSuffix": ".ws.gitpod.central.dev.cloud.ilab-nlb.de",
+          "workspaceHostSuffixRegex": "\\.ws[^\\.]*\\.gitpod.central.dev.cloud.ilab-nlb.de"
         },
         "workspacePodConfig": {
           "theiaPort": 23000,

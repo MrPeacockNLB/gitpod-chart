@@ -11,7 +11,7 @@ metadata:
   namespace: gitpod
 spec:
   dnsNames:
-    - reg.gitpod.devops.hub.cloud.ilab-nlb.de
+    - reg.gitpod.central.dev.cloud.ilab-nlb.de
   duration: 2160h0m0s
   issuerRef:
     group: cert-manager.io

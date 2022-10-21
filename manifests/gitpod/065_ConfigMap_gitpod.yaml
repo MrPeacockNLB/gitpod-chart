@@ -17,7 +17,7 @@ data:
     database:
       inCluster: true
     disableDefinitelyGp: true
-    domain: gitpod.devops.hub.cloud.ilab-nlb.de
+    domain: gitpod.central.dev.cloud.ilab-nlb.de
     kind: Full
     metadata:
       region: local

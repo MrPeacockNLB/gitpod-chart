@@ -22,11 +22,11 @@ data:
         "initProbe": {
           "timeout": "1s"
         },
-        "urlTemplate": "https://{{ .Prefix }}.ws.gitpod.devops.hub.cloud.ilab-nlb.de",
-        "portUrlTemplate": "https://{{ .WorkspacePort }}-{{ .Prefix }}.ws.gitpod.devops.hub.cloud.ilab-nlb.de",
+        "urlTemplate": "https://{{ .Prefix }}.ws.gitpod.central.dev.cloud.ilab-nlb.de",
+        "portUrlTemplate": "https://{{ .WorkspacePort }}-{{ .Prefix }}.ws.gitpod.central.dev.cloud.ilab-nlb.de",
         "workspaceHostPath": "/var/gitpod/workspaces",
         "heartbeatInterval": "30s",
-        "hostURL": "https://gitpod.devops.hub.cloud.ilab-nlb.de",
+        "hostURL": "https://gitpod.central.dev.cloud.ilab-nlb.de",
         "reconnectionInterval": "30s",
         "wsdaemon": {
           "port": 8080,
@@ -36,8 +36,8 @@ data:
             "key": "/ws-daemon-tls-certs/tls.key"
           }
         },
-        "registryFacadeHost": "reg.gitpod.devops.hub.cloud.ilab-nlb.de:20000",
-        "workspaceClusterHost": "ws.gitpod.devops.hub.cloud.ilab-nlb.de",
+        "registryFacadeHost": "reg.gitpod.central.dev.cloud.ilab-nlb.de:20000",
+        "workspaceClusterHost": "ws.gitpod.central.dev.cloud.ilab-nlb.de",
         "workspaceClass": {
           "default": {
             "name": "default",
@@ -76,9 +76,9 @@ data:
           },
           "minio": {
             "endpoint": "minio.gitpod.svc.cluster.local:9000",
-            "accessKey": "-9gKs6X-HHPsn1BjNF9v",
+            "accessKey": "YztnliPMytpJ062SSTM9",
             "accessKeyFile": "",
-            "secretKey": "XjhcfLWLF3UiOE1nuocp",
+            "secretKey": "HKthpewoxzeEwa0aWCn1",
             "secretKeyFile": "",
             "region": "local",
             "parallelUpload": 6

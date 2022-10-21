@@ -3,13 +3,13 @@
 apiVersion: v1
 data:
   vhost.docker-registry: |-
-    https://registry.gitpod.devops.hub.cloud.ilab-nlb.de {
+    https://registry.gitpod.central.dev.cloud.ilab-nlb.de {
         import enable_log
         import remove_server_header
         import ssl_configuration
 
         basicauth bcrypt "Docker Registry" {
-            jJnGRKkKqPYax4bLmYb4 JDJhJDEwJDNLY2lMcld3ajlXaHFIblRLMFg2bnV4M1FteTIwNjREbVkyUDh3ZlVCMDRhSk9veTN5dWFD
+            2jEqcDYXH8M6tI4O90Kz JDJhJDEwJHIzaDZWeUpQMm5KaEdBb1RUMjBONE9yN0V1WFFnRTg4Q0EvcE50bEdIRFc3YVJ6dUFiV1ZD
         }
 
         reverse_proxy https://registry.gitpod.svc.cluster.local {
@@ -21,7 +21,7 @@ data:
     }
   vhost.empty: '# Placeholder to avoid errors loading files using a glob pattern'
   vhost.ide-proxy: |
-    https://ide.gitpod.devops.hub.cloud.ilab-nlb.de {
+    https://ide.gitpod.central.dev.cloud.ilab-nlb.de {
         import enable_log_debug
         import remove_server_header
         import ssl_configuration
@@ -31,7 +31,7 @@ data:
         }
     }
   vhost.minio: |-
-    https://minio.gitpod.devops.hub.cloud.ilab-nlb.de {
+    https://minio.gitpod.central.dev.cloud.ilab-nlb.de {
         import enable_log
         import remove_server_header
         import ssl_configuration
@@ -41,7 +41,7 @@ data:
         }
     }
   vhost.open-vsx: |-
-    https://open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de {
+    https://open-vsx.gitpod.central.dev.cloud.ilab-nlb.de {
         import enable_log_debug
         import remove_server_header
         import ssl_configuration
@@ -51,7 +51,7 @@ data:
         }
     }
   vhost.payment-endpoint: |
-    https://payment.gitpod.devops.hub.cloud.ilab-nlb.de {
+    https://payment.gitpod.central.dev.cloud.ilab-nlb.de {
         import enable_log
         import remove_server_header
         import ssl_configuration

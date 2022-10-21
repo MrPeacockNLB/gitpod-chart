@@ -767,7 +767,7 @@ data:
     metadata:
       annotations:
         cloud.google.com/neg: '{"exposed_ports": {"80":{},"443": {}}}'
-        external-dns.alpha.kubernetes.io/hostname: gitpod.devops.hub.cloud.ilab-nlb.de,*.gitpod.devops.hub.cloud.ilab-nlb.de,*.ws.gitpod.devops.hub.cloud.ilab-nlb.de
+        external-dns.alpha.kubernetes.io/hostname: gitpod.central.dev.cloud.ilab-nlb.de,*.gitpod.central.dev.cloud.ilab-nlb.de,*.ws.gitpod.central.dev.cloud.ilab-nlb.de
       creationTimestamp: null
       labels:
         app: gitpod
@@ -969,7 +969,7 @@ data:
     kind: DaemonSet
     metadata:
       annotations:
-        gitpod.io/checksum_config: 0a4905f0c252e3dc8bd04c79708d10624ad9812bafe814ceb231eaa66ec3bef4
+        gitpod.io/checksum_config: 1152404c9cfa6d75ae0cd09989497db0cfbb4f24e430dc48954bc39854d3a605
       creationTimestamp: null
       labels:
         app: gitpod

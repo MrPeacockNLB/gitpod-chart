@@ -35,9 +35,9 @@ data:
             },
             "minio": {
               "endpoint": "minio.gitpod.svc.cluster.local:9000",
-              "accessKey": "-9gKs6X-HHPsn1BjNF9v",
+              "accessKey": "YztnliPMytpJ062SSTM9",
               "accessKeyFile": "",
-              "secretKey": "XjhcfLWLF3UiOE1nuocp",
+              "secretKey": "HKthpewoxzeEwa0aWCn1",
               "secretKeyFile": "",
               "region": "local",
               "parallelUpload": 6
@@ -97,7 +97,7 @@ data:
             "registryFacade": [
               {
                 "addr": "127.0.0.1",
-                "name": "reg.gitpod.devops.hub.cloud.ilab-nlb.de"
+                "name": "reg.gitpod.central.dev.cloud.ilab-nlb.de"
               }
             ]
           }

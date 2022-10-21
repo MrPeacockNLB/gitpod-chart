@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: bc67f52f138e4ecad35396dd674a37b9947023a59e32d068fe75bee7f7c3dc0e
+        gitpod.io/checksum_config: 069812937db257342560a57fc59c7ec91c92cd7882e32dd2c007ca743b4f2903
       creationTimestamp: null
       labels:
         app: gitpod
@@ -68,13 +68,13 @@ spec:
             runAsUser: 65532
         - env:
             - name: GITPOD_DOMAIN
-              value: gitpod.devops.hub.cloud.ilab-nlb.de
+              value: gitpod.central.dev.cloud.ilab-nlb.de
             - name: GITPOD_INSTALLATION_SHORTNAME
               value: default
             - name: GITPOD_REGION
               value: local
             - name: HOST_URL
-              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+              value: https://gitpod.central.dev.cloud.ilab-nlb.de
             - name: KUBE_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -84,7 +84,7 @@ spec:
             - name: LOG_LEVEL
               value: trace
             - name: PROXY_DOMAIN
-              value: gitpod.devops.hub.cloud.ilab-nlb.de
+              value: gitpod.central.dev.cloud.ilab-nlb.de
           image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: proxy
