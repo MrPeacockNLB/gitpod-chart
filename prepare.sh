@@ -47,7 +47,7 @@ cp -r tmp/gitpod tmp/org
 
 # replace selector only if exists in YAML files
 LABEL="kubernetes.io/hostname"
-VALUE="aks-central-90269204-vmss00002p"
+VALUE="aks-central-90269204-vmss00001z"
 for f in tmp/gitpod/*.yaml; do  yq -i '(select(.spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) | .spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) |= (del(.nodeSelectorTerms[]), .nodeSelectorTerms[0].matchExpressions[0].key = "'$LABEL'", .nodeSelectorTerms[0].matchExpressions[0].values[0] = "'$VALUE'", .nodeSelectorTerms[0].matchExpressions[0].operator = "In") ' "$f"; done
 
 # dump diff

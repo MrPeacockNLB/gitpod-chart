@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: dffd8593a46d90ee117b7587a42835de97d60f2c342ed17a0e07d832ee82472d
+        gitpod.io/checksum_config: b510727a59e022a83f07adb9a8c027fe4ef8476f3c55167a5a40bbe761856311
       creationTimestamp: null
       labels:
         app: gitpod
@@ -38,7 +38,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - args:
@@ -66,7 +66,7 @@ spec:
               value: "true"
             - name: GRPC_GO_RETRY
               value: "on"
-          image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-db90d17e500dba3df59b92273d773919e0c3fdd2
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: ws-manager
           ports:

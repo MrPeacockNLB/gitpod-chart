@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 821c190b307ce52e16e018f4c71b2e8a4f6b8106b05b0352c8d73178c6a3933a
+        gitpod.io/checksum_config: 41f324640e96944042b5f9078357fab001f2c26a974641cc74adf7f17c2d7368
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,7 +31,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - args:
@@ -62,7 +62,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
@@ -140,7 +140,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
@@ -158,7 +158,7 @@ spec:
             - bash
             - -c
             - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo 'OK'
-          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-322d8016089cdf29e7abe59ddc3d4d1c50d72262
+          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366
           imagePullPolicy: IfNotPresent
           name: update-ca-certificates
           resources: {}

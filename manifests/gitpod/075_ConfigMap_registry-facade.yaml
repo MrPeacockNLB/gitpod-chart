@@ -9,15 +9,15 @@ data:
         "prefix": "",
         "staticLayer": [
           {
-            "ref": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415",
+            "ref": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
             "type": "image"
           },
           {
-            "ref": "eu.gcr.io/gitpod-core-dev/build/workspacekit:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "ref": "eu.gcr.io/gitpod-core-dev/build/workspacekit:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
             "type": "image"
           },
           {
-            "ref": "eu.gcr.io/gitpod-core-dev/build/docker-up:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "ref": "eu.gcr.io/gitpod-core-dev/build/docker-up:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
             "type": "image"
           }
         ],

@@ -53,148 +53,148 @@ data:
   versions.json: |-
     {
       "versions": {
-        "version": "release-2022.09.1.2",
+        "version": "release-2022.09.2.3",
         "components": {
           "agentSmith": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "blobserve": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "caUpdater": {
-            "version": "commit-322d8016089cdf29e7abe59ddc3d4d1c50d72262"
+            "version": "commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366"
           },
           "contentService": {
-            "version": "commit-e0a1d0d8587a5253772b61aa6499d60177d9f415"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "dashboard": {
-            "version": "commit-d05b3e5fce347ad9bbc775a2af0cc65abc41c7c1"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "dbMigrations": {
-            "version": "commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "dbSync": {
-            "version": "commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "ideProxy": {
-            "version": "commit-55ffd94aa1c8701372c95bfaaa5954bddc13a233"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "ideMetrics": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "ideService": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "imageBuilder": {
             "version": ""
           },
           "imageBuilderMk3": {
-            "version": "commit-e0a1d0d8587a5253772b61aa6499d60177d9f415",
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
             "builderImage": {
-              "version": "3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+              "version": "cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
             }
           },
           "installationTelemetry": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "integrationTests": {
             "version": ""
           },
           "openVSXProxy": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "paymentEndpoint": {
-            "version": "commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "proxy": {
-            "version": "commit-78598f5050977bd019cef431d90f887cdb3b0f06"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "public-api-server": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "registryFacade": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "server": {
-            "version": "commit-4adbe8a12a23bf0bb9beaf3daec68800a1c37dad"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "serviceWaiter": {
-            "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "usage": {
-            "version": "commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "workspace": {
             "codeImage": {
-              "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
             },
             "dockerUp": {
-              "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
             },
             "supervisor": {
-              "version": "commit-e0a1d0d8587a5253772b61aa6499d60177d9f415"
+              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
             },
             "workspacekit": {
-              "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
             },
             "desktopIdeImages": {
               "codeDesktop": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "codeDesktopInsiders": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "intellij": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "intellijLatest": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114-latest"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
               },
               "goland": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "golandLatest": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114-latest"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
               },
               "pycharm": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "pycharmLatest": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114-latest"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
               },
               "phpstorm": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "phpstormLatest": {
-                "version": "commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114-latest"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
               },
               "jbBackendPlugin": {
-                "version": "commit-db90d17e500dba3df59b92273d773919e0c3fdd2"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "jbBackendPluginLatest": {
-                "version": "commit-db90d17e500dba3df59b92273d773919e0c3fdd2-latest"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
               }
             }
           },
           "wsDaemon": {
-            "version": "commit-c2a4a3798f17d2098d467d7ce5b7097e34fa1331",
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
             "userNamespaces": {
               "seccompProfileInstaller": {
-                "version": "commit-a0e09a93ccb715a402c615ec7873e311863e6a99"
+                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
               },
               "shiftfsModuleLoader": {
-                "version": "commit-9fbb1f3b46ccdf12850005f0abab0eb2adc8cdb1"
+                "version": "commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366"
               }
             }
           },
           "wsManager": {
-            "version": "commit-db90d17e500dba3df59b92273d773919e0c3fdd2"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "wsManagerBridge": {
-            "version": "commit-e0a1d0d8587a5253772b61aa6499d60177d9f415"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           },
           "wsProxy": {
-            "version": "commit-e0a1d0d8587a5253772b61aa6499d60177d9f415"
+            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
           }
         }
       }

@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: bee69273c558be0fbfb6c732c41c916f419876d01be5c8eb7a5ea1956c17887a
+        gitpod.io/checksum_config: 2a6b6f28fd77fc3c90312b8e98e45e21cfc5f2c35221a66e8a842f65d5880453
       creationTimestamp: null
       labels:
         app: gitpod
@@ -38,7 +38,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - args:
@@ -64,7 +64,7 @@ spec:
               value: trace
             - name: JAEGER_DISABLED
               value: "true"
-          image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415
+          image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: image-builder-mk3
           ports:
@@ -117,7 +117,7 @@ spec:
             - bash
             - -c
             - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo 'OK'
-          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-322d8016089cdf29e7abe59ddc3d4d1c50d72262
+          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366
           imagePullPolicy: IfNotPresent
           name: update-ca-certificates
           resources: {}

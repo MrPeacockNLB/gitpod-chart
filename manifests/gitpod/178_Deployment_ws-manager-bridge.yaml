@@ -38,7 +38,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - env:
@@ -112,7 +112,7 @@ spec:
                   name: mysql
             - name: WSMAN_BRIDGE_CONFIGPATH
               value: /config/ws-manager-bridge.json
-          image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: ws-manager-bridge
           ports:
@@ -187,7 +187,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           name: database-waiter
           resources: {}
           securityContext:
@@ -222,7 +222,7 @@ spec:
                 secretKeyRef:
                   key: tls.key
                   name: messagebus-certificates-secret-core
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           name: msgbus-waiter
           resources: {}
           securityContext:

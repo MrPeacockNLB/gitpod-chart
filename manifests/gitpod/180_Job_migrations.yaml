@@ -26,7 +26,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - command:
@@ -59,7 +59,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/db-migrations:commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82
+          image: eu.gcr.io/gitpod-core-dev/build/db-migrations:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: migrations
           resources: {}
@@ -94,7 +94,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           name: database-waiter
           resources: {}
           securityContext:

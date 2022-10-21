@@ -35,12 +35,12 @@ spec:
                 - send
               env:
                 - name: GITPOD_INSTALLATION_VERSION
-                  value: release-2022.09.1.2
+                  value: release-2022.09.2.3
                 - name: GITPOD_INSTALLATION_PLATFORM
                   value: unknown
                 - name: SERVER_URL
                   value: http://server.gitpod.svc.cluster.local:9000
-              image: eu.gcr.io/gitpod-core-dev/build/installation-telemetry:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+              image: eu.gcr.io/gitpod-core-dev/build/installation-telemetry:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
               imagePullPolicy: IfNotPresent
               name: gitpod-telemetry
               resources: {}
@@ -75,7 +75,7 @@ spec:
                     secretKeyRef:
                       key: encryptionKeys
                       name: mysql
-              image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+              image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
               name: database-waiter
               resources: {}
               securityContext:

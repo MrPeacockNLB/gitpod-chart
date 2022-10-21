@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: b0f87b22e37c0b0281ff36b82a0c617d24827000eedd4755b4ca128e97674b12
+        gitpod.io/checksum_config: c0ff78ae84e25a98dc997c18b9f485b5309956520038ad84dfe5023a7f341459
       creationTimestamp: null
       labels:
         app: gitpod
@@ -38,7 +38,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - env:
@@ -122,7 +122,7 @@ spec:
               value: "1"
             - name: WSMAN_CFG_MANAGERS
               value: WwogIHsKICAgICJuYW1lIjogImRlZmF1bHQiLAogICAgInVybCI6ICJkbnM6Ly8vd3MtbWFuYWdlcjo4MDgwIiwKICAgICJ0bHMiOiB7CiAgICAgICJjYSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL2NhLmNydCIsCiAgICAgICJjcnQiOiAiL3dzLW1hbmFnZXItY2xpZW50LXRscy1jZXJ0cy90bHMuY3J0IiwKICAgICAgImtleSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL3Rscy5rZXkiCiAgICB9LAogICAgInN0YXRlIjogImF2YWlsYWJsZSIsCiAgICAibWF4U2NvcmUiOiAxMDAsCiAgICAic2NvcmUiOiA1MCwKICAgICJnb3Zlcm4iOiB0cnVlLAogICAgImFkbWlzc2lvbkNvbnN0cmFpbnRzIjogbnVsbAogIH0KXQ==
-          image: eu.gcr.io/gitpod-core-dev/build/server:commit-4adbe8a12a23bf0bb9beaf3daec68800a1c37dad
+          image: eu.gcr.io/gitpod-core-dev/build/server:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 6
@@ -217,7 +217,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           name: database-waiter
           resources: {}
           securityContext:
@@ -252,7 +252,7 @@ spec:
                 secretKeyRef:
                   key: tls.key
                   name: messagebus-certificates-secret-core
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           name: msgbus-waiter
           resources: {}
           securityContext:

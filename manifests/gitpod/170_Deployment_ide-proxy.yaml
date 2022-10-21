@@ -36,7 +36,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - env:
@@ -56,7 +56,7 @@ spec:
               value: svc.cluster.local
             - name: LOG_LEVEL
               value: trace
-          image: eu.gcr.io/gitpod-core-dev/build/ide-proxy:commit-55ffd94aa1c8701372c95bfaaa5954bddc13a233
+          image: eu.gcr.io/gitpod-core-dev/build/ide-proxy:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: ide-proxy
           ports:

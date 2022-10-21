@@ -25,7 +25,7 @@ spec:
         release: docker-registry
       annotations:
         checksum/config: 1389d7384a30c4d02816cb9473a69fae77c3c43f4560718e74b564854c8333f7
-        gitpod.io/checksum_config: 2195367f0caa6ef68e0a5ad011b7429c9ec73161a1b8dfbb920e9305dd526ca3
+        gitpod.io/checksum_config: 30eb7361753fcaf361442a98a7ed90ea12c902663c35ee77b49ba9538509bdb2
     spec:
       serviceAccountName: docker-registry
       securityContext:

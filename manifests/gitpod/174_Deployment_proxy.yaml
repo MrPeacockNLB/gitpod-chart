@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: b4705c05a549ad311ea66cdeb4d6baa6fd1d81892afa2d0c42d67bb13ac4dc80
+        gitpod.io/checksum_config: bc67f52f138e4ecad35396dd674a37b9947023a59e32d068fe75bee7f7c3dc0e
       creationTimestamp: null
       labels:
         app: gitpod
@@ -38,7 +38,7 @@ spec:
               - matchExpressions:
                   - key: kubernetes.io/hostname
                     values:
-                      - aks-central-90269204-vmss00002p
+                      - aks-central-90269204-vmss00001z
                     operator: In
       containers:
         - args:
@@ -85,7 +85,7 @@ spec:
               value: trace
             - name: PROXY_DOMAIN
               value: gitpod.devops.hub.cloud.ilab-nlb.de
-          image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-78598f5050977bd019cef431d90f887cdb3b0f06
+          image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
           imagePullPolicy: IfNotPresent
           name: proxy
           ports:
