@@ -35,15 +35,7 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       serviceAccountName: rabbitmq
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    values:
-                      - aks-central-90269204-vmss00001z
-                    operator: In
+      affinity: {}
       securityContext:
         fsGroup: 1001
       terminationGracePeriodSeconds: 120

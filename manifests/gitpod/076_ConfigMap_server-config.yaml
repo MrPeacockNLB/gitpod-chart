@@ -78,7 +78,7 @@ data:
       },
       "oauthServer": {
         "enabled": true,
-        "jwtSecret": "1hBptVEKS7PuUVFtUero"
+        "jwtSecret": "bfFU0JH_4YUWvewa7Tu4"
       },
       "rateLimiter": {
         "groups": {

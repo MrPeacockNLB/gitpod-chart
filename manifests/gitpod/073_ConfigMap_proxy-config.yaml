@@ -9,7 +9,7 @@ data:
         import ssl_configuration
 
         basicauth bcrypt "Docker Registry" {
-            2jEqcDYXH8M6tI4O90Kz JDJhJDEwJHIzaDZWeUpQMm5KaEdBb1RUMjBONE9yN0V1WFFnRTg4Q0EvcE50bEdIRFc3YVJ6dUFiV1ZD
+            qj35DFvBsc_uLTblVWE6 JDJhJDEwJDl6UzlGTllaZEdmQS5CYTZVaVp4eS45SVdzVmFsTVBaMFBMMDNiTk5qY3l0V3VUUTNEbDhl
         }
 
         reverse_proxy https://registry.gitpod.svc.cluster.local {

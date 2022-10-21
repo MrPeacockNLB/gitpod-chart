@@ -24,15 +24,7 @@ spec:
         component: agent-smith
       name: agent-smith
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    values:
-                      - aks-central-90269204-vmss00001z
-                    operator: In
+      affinity: {}
       containers:
         - args:
             - run

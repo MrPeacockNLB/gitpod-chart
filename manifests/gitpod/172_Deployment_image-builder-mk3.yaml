@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 305f26856c36ff84864915f88a1861961286586c68dae54dab0f70bbb3cb2b05
+        gitpod.io/checksum_config: 6aeb10efa092f9dcf40888c4dcfdac408edc4fef6a7c4bae538fed139f791b90
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,15 +31,7 @@ spec:
       name: image-builder-mk3
       namespace: gitpod
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    values:
-                      - aks-central-90269204-vmss00001z
-                    operator: In
+      affinity: {}
       containers:
         - args:
             - run

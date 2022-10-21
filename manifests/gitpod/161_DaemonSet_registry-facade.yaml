@@ -17,22 +17,14 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 46f476967c84706cfcddb2b226acf54a9e3d2a99f395618dfca3b2a8bc0a3b29
+        gitpod.io/checksum_config: a14301403169a3417d22db119961ff904a459c2d32a52ba9c950655ed3555a5f
       creationTimestamp: null
       labels:
         app: gitpod
         component: registry-facade
       name: registry-facade
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    values:
-                      - aks-central-90269204-vmss00001z
-                    operator: In
+      affinity: {}
       containers:
         - args:
             - run

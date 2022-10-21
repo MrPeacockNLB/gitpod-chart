@@ -17,9 +17,9 @@ data:
         },
         "minio": {
           "endpoint": "minio.gitpod.svc.cluster.local:9000",
-          "accessKey": "YztnliPMytpJ062SSTM9",
+          "accessKey": "Pg9fJorSSQ6-VACHY3Ct",
           "accessKeyFile": "",
-          "secretKey": "HKthpewoxzeEwa0aWCn1",
+          "secretKey": "5Q2.I9MilnNXz4ZIlree",
           "secretKeyFile": "",
           "region": "local",
           "parallelUpload": 6
