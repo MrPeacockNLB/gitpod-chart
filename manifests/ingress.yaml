@@ -19,12 +19,12 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - "gitpod.devops.hub.cloud.ilab-nlb.de"
-    - "*.gitpod.devops.hub.cloud.ilab-nlb.de"
-    - "*.ws.gitpod.devops.hub.cloud.ilab-nlb.de"
+    - "gitpod.central.dev.cloud.ilab-nlb.de"
+    - "*.gitpod.central.dev.cloud.ilab-nlb.de"
+    - "*.ws.gitpod.central.dev.cloud.ilab-nlb.de"
     secretName: https-certificates
   rules:
-  - host: gitpod.devops.hub.cloud.ilab-nlb.de
+  - host: gitpod.central.dev.cloud.ilab-nlb.de
     http: &http_rules
       paths:
       - backend:
@@ -34,7 +34,7 @@ spec:
               number: 443
         path: /
         pathType: Prefix
-  - host: "*.gitpod.devops.hub.cloud.ilab-nlb.de"
+  - host: "*.gitpod.central.dev.cloud.ilab-nlb.de"
     http: *http_rules
-  - host: "*.ws.gitpod.devops.hub.cloud.ilab-nlb.de"
+  - host: "*.ws.gitpod.central.dev.cloud.ilab-nlb.de"
     http: *http_rules
