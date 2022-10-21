@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 6aeb10efa092f9dcf40888c4dcfdac408edc4fef6a7c4bae538fed139f791b90
+        gitpod.io/checksum_config: 5e172fe4910e249dfefb34ccaeed8c8e4f62bf4cb1a544fbe5c3423e78156bb6
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,7 +31,13 @@ spec:
       name: image-builder-mk3
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       containers:
         - args:
             - run

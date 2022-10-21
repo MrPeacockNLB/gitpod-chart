@@ -26,10 +26,16 @@ spec:
         app.kubernetes.io/instance: minio
         app.kubernetes.io/managed-by: Helm
       annotations:
-        checksum/credentials-secret: eb32cd2d305265f827359080680d996318b5a4f9b58195f0822148c86329b53b
+        checksum/credentials-secret: 2f64019cdb78936c5f6d4092fcb4d03e1c2ddab8dfe7914f35f31e373b611d1f
     spec:
       serviceAccountName: minio
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       securityContext:
         fsGroup: 1001
       containers:

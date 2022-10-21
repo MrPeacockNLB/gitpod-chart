@@ -24,7 +24,16 @@ spec:
         component: agent-smith
       name: agent-smith
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_regular
+                    operator: Exists
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_headless
+                    operator: Exists
       containers:
         - args:
             - run

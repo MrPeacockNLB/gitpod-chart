@@ -35,7 +35,13 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       serviceAccountName: rabbitmq
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       securityContext:
         fsGroup: 1001
       terminationGracePeriodSeconds: 120

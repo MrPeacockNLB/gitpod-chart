@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 5d71b8bdb8e0846f486d5e752b2cefbea5d1cad388a5d00284924f9df0983af7
+        gitpod.io/checksum_config: 21400f376a1fb6da81550be4ecd1bfd9f4e617d98a7c59b50a0b6d282c9979b2
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,7 +31,13 @@ spec:
       name: blobserve
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_ide
+                    operator: Exists
       containers:
         - args:
             - run

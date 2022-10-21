@@ -17,14 +17,23 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: a14301403169a3417d22db119961ff904a459c2d32a52ba9c950655ed3555a5f
+        gitpod.io/checksum_config: 0c8099cb6610ab9941bff6ae816031ecfc32f7dfaf9522730b373b985233cbab
       creationTimestamp: null
       labels:
         app: gitpod
         component: registry-facade
       name: registry-facade
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_regular
+                    operator: Exists
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_headless
+                    operator: Exists
       containers:
         - args:
             - run

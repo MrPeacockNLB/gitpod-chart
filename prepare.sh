@@ -51,7 +51,7 @@ cp -r tmp/gitpod tmp/org
 #for f in tmp/gitpod/*.yaml; do  yq -i '(select(.spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) | .spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) |= (del(.nodeSelectorTerms[]), .nodeSelectorTerms[0].matchExpressions[0].key = "'$LABEL'", .nodeSelectorTerms[0].matchExpressions[0].values[0] = "'$VALUE'", .nodeSelectorTerms[0].matchExpressions[0].operator = "In") ' "$f"; done
 
 # delete 
-for f in tmp/gitpod/*.yaml; do  yq -i 'del(.spec.template.spec.affinity.nodeAffinity)' "$f"; done
+#for f in tmp/gitpod/*.yaml; do  yq -i 'del(.spec.template.spec.affinity.nodeAffinity)' "$f"; done
 
 # dump diff
 diff -u tmp/org tmp/gitpod

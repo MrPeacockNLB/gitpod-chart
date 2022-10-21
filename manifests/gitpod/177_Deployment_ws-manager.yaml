@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 85b891e5619ff7050ed17f376dd38cc8178be0f9e311cbb7d3af2dc6e091794c
+        gitpod.io/checksum_config: 1b1e56004e5eaa41dab15c854a99b5791625762c921767aef590db98eb92cb5f
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,7 +31,13 @@ spec:
       name: ws-manager
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_services
+                    operator: Exists
       containers:
         - args:
             - run

@@ -31,7 +31,13 @@ spec:
       name: ide-service
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       containers:
         - args:
             - run

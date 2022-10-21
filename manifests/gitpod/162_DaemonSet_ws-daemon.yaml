@@ -17,14 +17,23 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 0bc255956395885c1ee8fbe57ba85596d9353d1c511bb683758070fa29ff57cc
+        gitpod.io/checksum_config: 4890fa4fff20fe62a38f075e04998dccdcd5e1ad37c693dec8a38e2c20da002a
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
         app: gitpod
         component: ws-daemon
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_regular
+                    operator: Exists
+              - matchExpressions:
+                  - key: gitpod.io/workload_workspace_headless
+                    operator: Exists
       containers:
         - args:
             - run

@@ -31,7 +31,13 @@ spec:
       name: ws-manager-bridge
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       containers:
         - env:
             - name: GITPOD_DOMAIN

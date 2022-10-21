@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: d785e4d25e7ffe7b41a4a9bf82177902852d117a37c7380eed3b95cd7789614f
+        gitpod.io/checksum_config: e035540b5b28bb6434c5527f2a492d83af63dee488e6356156ba3c3ee46f85c7
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,7 +31,13 @@ spec:
       name: proxy
       namespace: gitpod
     spec:
-      affinity: {}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: gitpod.io/workload_meta
+                    operator: Exists
       containers:
         - args:
             - --logtostderr
