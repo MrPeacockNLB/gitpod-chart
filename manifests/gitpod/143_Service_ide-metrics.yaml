@@ -1,0 +1,24 @@
+---
+# v1/Service ide-metrics
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-metrics
+    kind: service
+  name: ide-metrics
+  namespace: gitpod
+spec:
+  ports:
+    - name: http
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: gitpod
+    component: ide-metrics
+  type: ClusterIP
+status:
+  loadBalancer: {}

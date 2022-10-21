@@ -1,0 +1,117 @@
+---
+# apps/v1/Deployment ide-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-service
+  name: ide-service
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ide-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: f82286374696fc07881c90b006f422949e5577d4f261f7d037fb17eacda035ff
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ide-service
+      name: ide-service
+      namespace: gitpod
+    spec:
+      containers:
+        - args:
+            - run
+            - --config
+            - /config/config.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+          image: eu.gcr.io/gitpod-core-dev/build/ide-service:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          imagePullPolicy: IfNotPresent
+          name: ide-service
+          ports:
+            - containerPort: 9001
+              name: grpc
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /ready
+              port: 9501
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - mountPath: /config
+              name: config
+              readOnly: true
+            - mountPath: /ide-config
+              name: ide-config
+              readOnly: true
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      restartPolicy: Always
+      serviceAccountName: ide-service
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            name: ide-service
+          name: config
+        - configMap:
+            name: ide-config
+          name: ide-config
+status: {}

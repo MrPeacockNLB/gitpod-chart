@@ -1,0 +1,111 @@
+---
+# v1/ConfigMap ide-config
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "supervisorImage": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415",
+      "ideOptions": {
+        "options": {
+          "code": {
+            "orderKey": "00",
+            "title": "VS Code",
+            "type": "browser",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/vscode.svg",
+            "label": "Browser",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/code:commit-97cff52e43760ad3ad96aa82d9fba934c5f53be8",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/code:nightly"
+          },
+          "code-desktop": {
+            "orderKey": "02",
+            "title": "VS Code",
+            "type": "desktop",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/vscode.svg",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/code-desktop:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/code-desktop-insiders:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114"
+          },
+          "goland": {
+            "orderKey": "05",
+            "title": "GoLand",
+            "type": "desktop",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/golandLogo.svg",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/goland:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/goland:latest",
+            "pluginImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2",
+            "pluginLatestImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2-latest"
+          },
+          "intellij": {
+            "orderKey": "04",
+            "title": "IntelliJ IDEA",
+            "type": "desktop",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/intellijIdeaLogo.svg",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/intellij:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/intellij:latest",
+            "pluginImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2",
+            "pluginLatestImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2-latest"
+          },
+          "phpstorm": {
+            "orderKey": "07",
+            "title": "PhpStorm",
+            "type": "desktop",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/phpstormLogo.svg",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/phpstorm:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/phpstorm:latest",
+            "pluginImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2",
+            "pluginLatestImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2-latest"
+          },
+          "pycharm": {
+            "orderKey": "06",
+            "title": "PyCharm",
+            "type": "desktop",
+            "logo": "https://ide.gitpod.devops.hub.cloud.ilab-nlb.de/image/ide-logo/pycharmLogo.svg",
+            "image": "eu.gcr.io/gitpod-core-dev/build/ide/pycharm:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114",
+            "latestImage": "eu.gcr.io/gitpod-core-dev/build/ide/pycharm:latest",
+            "pluginImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2",
+            "pluginLatestImage": "eu.gcr.io/gitpod-core-dev/build/ide/jb-backend-plugin:commit-db90d17e500dba3df59b92273d773919e0c3fdd2-latest"
+          }
+        },
+        "defaultIde": "code",
+        "defaultDesktopIde": "code-desktop",
+        "clients": {
+          "jetbrains-gateway": {
+            "defaultDesktopIDE": "intellij",
+            "desktopIDEs": [
+              "intellij",
+              "goland",
+              "pycharm",
+              "phpstorm"
+            ],
+            "installationSteps": [
+              "If you don't see an open dialog in your browser, make sure you have the \u003ca target='_blank' class='gp-link' href='https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway#getting-started-jetbrains-gateway'\u003eJetBrains Gateway with Gitpod Plugin\u003c/a\u003e installed on your machine, and then click \u003cb\u003e${OPEN_LINK_LABEL}\u003c/b\u003e below."
+            ]
+          },
+          "vscode": {
+            "defaultDesktopIDE": "code-desktop",
+            "desktopIDEs": [
+              "code-desktop"
+            ],
+            "installationSteps": [
+              "If you don't see an open dialog in your browser, make sure you have \u003ca target='_blank' class='gp-link' href='https://code.visualstudio.com/download'\u003eVS Code\u003c/a\u003e installed on your machine, and then click \u003cb\u003e${OPEN_LINK_LABEL}\u003c/b\u003e below."
+            ]
+          },
+          "vscode-insiders": {
+            "defaultDesktopIDE": "code-desktop",
+            "desktopIDEs": [
+              "code-desktop"
+            ],
+            "installationSteps": [
+              "If you don't see an open dialog in your browser, make sure you have \u003ca target='_blank' class='gp-link' href='https://code.visualstudio.com/insiders'\u003eVS Code Insiders\u003c/a\u003e installed on your machine, and then click \u003cb\u003e${OPEN_LINK_LABEL}\u003c/b\u003e below."
+            ]
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-service
+  name: ide-config
+  namespace: gitpod

@@ -1,0 +1,16 @@
+---
+# rbac.authorization.k8s.io/v1/RoleBinding gitpod-ns-nobody
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: gitpod-ns-nobody
+  namespace: gitpod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:unprivileged
+subjects:
+  - kind: ServiceAccount
+    name: nobody
+    namespace: gitpod

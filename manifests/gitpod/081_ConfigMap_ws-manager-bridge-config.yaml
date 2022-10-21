@@ -1,0 +1,46 @@
+---
+# v1/ConfigMap ws-manager-bridge-config
+apiVersion: v1
+data:
+  ws-manager-bridge.json: |-
+    {
+      "installation": "default",
+      "staticBridges": [
+        {
+          "name": "default",
+          "url": "dns:///ws-manager:8080",
+          "tls": {
+            "ca": "/ws-manager-client-tls-certs/ca.crt",
+            "crt": "/ws-manager-client-tls-certs/tls.crt",
+            "key": "/ws-manager-client-tls-certs/tls.key"
+          },
+          "state": "available",
+          "maxScore": 100,
+          "score": 50,
+          "govern": true,
+          "admissionConstraints": null
+        }
+      ],
+      "clusterService": {
+        "port": 8080,
+        "host": "localhost"
+      },
+      "wsClusterDBReconcileIntervalSeconds": 60,
+      "controllerIntervalSeconds": 60,
+      "controllerMaxDisconnectSeconds": 150,
+      "emulatePreparingIntervalSeconds": 10,
+      "timeouts": {
+        "preparingPhaseSeconds": 3600,
+        "buildingPhaseSeconds": 3600,
+        "unknownPhaseSeconds": 600
+      },
+      "clusterSyncIntervalSeconds": 60
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager-bridge
+  name: ws-manager-bridge-config
+  namespace: gitpod

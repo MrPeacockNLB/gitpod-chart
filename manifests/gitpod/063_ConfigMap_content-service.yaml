@@ -1,0 +1,37 @@
+---
+# v1/ConfigMap content-service
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "service": {
+        "address": "0.0.0.0:8080"
+      },
+      "storage": {
+        "stage": "",
+        "kind": "minio",
+        "gcloud": {
+          "credentialsFile": "",
+          "region": "",
+          "projectId": ""
+        },
+        "minio": {
+          "endpoint": "minio.gitpod.svc.cluster.local:9000",
+          "accessKey": "s3IjXXg0MFz2lW8FLkBX",
+          "accessKeyFile": "",
+          "secretKey": "7Fgi..JYaka-j.5ej8hV",
+          "secretKeyFile": "",
+          "region": "local",
+          "parallelUpload": 6
+        },
+        "blobQuota": 5368709120
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: content-service
+  name: content-service
+  namespace: gitpod

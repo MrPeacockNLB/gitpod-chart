@@ -1,0 +1,18 @@
+---
+# rbac.authorization.k8s.io/v1/RoleBinding ws-proxy-api
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-proxy
+  name: ws-proxy-api
+  namespace: gitpod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ws-proxy
+subjects:
+  - kind: ServiceAccount
+    name: ws-proxy

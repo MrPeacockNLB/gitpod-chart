@@ -1,0 +1,24 @@
+---
+# v1/Service registry-facade
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: registry-facade
+    kind: service
+  name: registry-facade
+  namespace: gitpod
+spec:
+  ports:
+    - name: registry
+      port: 20000
+      protocol: TCP
+      targetPort: 32223
+  selector:
+    app: gitpod
+    component: registry-facade
+  type: ClusterIP
+status:
+  loadBalancer: {}

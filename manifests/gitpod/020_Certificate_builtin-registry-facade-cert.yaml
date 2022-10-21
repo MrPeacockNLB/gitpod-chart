@@ -1,0 +1,25 @@
+---
+# cert-manager.io/v1/Certificate builtin-registry-facade-cert
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: registry-facade
+  name: builtin-registry-facade-cert
+  namespace: gitpod
+spec:
+  dnsNames:
+    - reg.gitpod.devops.hub.cloud.ilab-nlb.de
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: builtin-registry-facade-cert
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: registry-facade
+status: {}

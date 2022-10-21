@@ -1,0 +1,11 @@
+---
+# v1/ConfigMap workspace-templates
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager
+  name: workspace-templates
+  namespace: gitpod

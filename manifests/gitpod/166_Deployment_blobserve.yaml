@@ -1,0 +1,131 @@
+---
+# apps/v1/Deployment blobserve
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: blobserve
+  name: blobserve
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: blobserve
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 02d250ca4e95ef3365427c98c332465c852f44c82a753fc73cf5a7ec4c82b44c
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: blobserve
+      name: blobserve
+      namespace: gitpod
+    spec:
+      containers:
+        - args:
+            - run
+            - /mnt/config/config.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+          image: eu.gcr.io/gitpod-core-dev/build/blobserve:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /live
+              port: 8086
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: blobserve
+          ports:
+            - containerPort: 32224
+              name: service
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /ready
+              port: 8086
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            privileged: false
+            runAsUser: 1000
+          volumeMounts:
+            - mountPath: /mnt/config
+              name: config
+              readOnly: true
+            - mountPath: /mnt/cache
+              name: cache
+            - mountPath: /mnt/pull-secret.json
+              name: pull-secret
+              subPath: .dockerconfigjson
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      enableServiceLinks: false
+      serviceAccountName: blobserve
+      volumes:
+        - emptyDir: {}
+          name: cache
+        - configMap:
+            name: blobserve
+          name: config
+        - name: pull-secret
+          secret:
+            secretName: builtin-registry-auth
+status: {}

@@ -1,0 +1,22 @@
+---
+# networking.k8s.io/v1/NetworkPolicy ide-service
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-service
+  name: ide-service
+  namespace: gitpod
+spec:
+  ingress:
+    - ports:
+        - port: 9001
+          protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: ide-service
+  policyTypes:
+    - Ingress

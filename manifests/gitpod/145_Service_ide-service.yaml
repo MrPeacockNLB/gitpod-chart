@@ -1,0 +1,24 @@
+---
+# v1/Service ide-service
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-service
+    kind: service
+  name: ide-service
+  namespace: gitpod
+spec:
+  ports:
+    - name: grpc
+      port: 9001
+      protocol: TCP
+      targetPort: 9001
+  selector:
+    app: gitpod
+    component: ide-service
+  type: ClusterIP
+status:
+  loadBalancer: {}

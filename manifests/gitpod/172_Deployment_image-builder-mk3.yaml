@@ -1,0 +1,138 @@
+---
+# apps/v1/Deployment image-builder-mk3
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: image-builder-mk3
+  name: image-builder-mk3
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: image-builder-mk3
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: e0e6e191c523a7d30e21682193e85141d5ce7519ef25162dca295b662550cb44
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: image-builder-mk3
+      name: image-builder-mk3
+      namespace: gitpod
+    spec:
+      containers:
+        - args:
+            - run
+            - --config
+            - /config/image-builder.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+          image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415
+          imagePullPolicy: IfNotPresent
+          name: image-builder-mk3
+          ports:
+            - containerPort: 8080
+              name: service
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          securityContext:
+            privileged: false
+            runAsUser: 33333
+          volumeMounts:
+            - mountPath: /config/image-builder.json
+              name: configuration
+              subPath: image-builder.json
+            - mountPath: /wsman-certs
+              name: wsman-tls-certs
+              readOnly: true
+            - mountPath: /config/pull-secret.json
+              name: pull-secret
+              subPath: .dockerconfigjson
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+        - command:
+            - bash
+            - -c
+            - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo 'OK'
+          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-322d8016089cdf29e7abe59ddc3d4d1c50d72262
+          imagePullPolicy: IfNotPresent
+          name: update-ca-certificates
+          resources: {}
+          volumeMounts:
+            - mountPath: /ssl-certs
+              name: cacerts
+            - mountPath: /usr/local/share/ca-certificates/gitpod-ca.crt
+              name: gitpod-ca-certificate
+              subPath: ca.crt
+      restartPolicy: Always
+      serviceAccountName: image-builder-mk3
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            name: image-builder-mk3-config
+          name: configuration
+        - name: wsman-tls-certs
+          secret:
+            secretName: ws-manager-client-tls
+        - name: pull-secret
+          secret:
+            secretName: builtin-registry-auth
+        - emptyDir: {}
+          name: gitpod-ca-certificate
+        - emptyDir: {}
+          name: cacerts
+status: {}

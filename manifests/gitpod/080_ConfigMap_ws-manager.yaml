@@ -1,0 +1,115 @@
+---
+# v1/ConfigMap ws-manager
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "manager": {
+        "namespace": "gitpod",
+        "schedulerName": "",
+        "seccompProfile": "workspace_default_release-2022.09.1.2.json",
+        "timeouts": {
+          "startup": "1h0m0s",
+          "initialization": "30m0s",
+          "regularWorkspace": "30m0s",
+          "maxLifetime": "36h0m0s",
+          "headlessWorkspace": "1h0m0s",
+          "afterClose": "2m0s",
+          "contentFinalization": "1h0m0s",
+          "stopping": "1h0m0s",
+          "interrupted": "5m0s"
+        },
+        "initProbe": {
+          "timeout": "1s"
+        },
+        "urlTemplate": "https://{{ .Prefix }}.ws.gitpod.devops.hub.cloud.ilab-nlb.de",
+        "portUrlTemplate": "https://{{ .WorkspacePort }}-{{ .Prefix }}.ws.gitpod.devops.hub.cloud.ilab-nlb.de",
+        "workspaceHostPath": "/var/gitpod/workspaces",
+        "heartbeatInterval": "30s",
+        "hostURL": "https://gitpod.devops.hub.cloud.ilab-nlb.de",
+        "reconnectionInterval": "30s",
+        "wsdaemon": {
+          "port": 8080,
+          "tls": {
+            "ca": "/ws-daemon-tls-certs/ca.crt",
+            "crt": "/ws-daemon-tls-certs/tls.crt",
+            "key": "/ws-daemon-tls-certs/tls.key"
+          }
+        },
+        "registryFacadeHost": "reg.gitpod.devops.hub.cloud.ilab-nlb.de:20000",
+        "workspaceClusterHost": "ws.gitpod.devops.hub.cloud.ilab-nlb.de",
+        "workspaceClass": {
+          "default": {
+            "name": "default",
+            "container": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "500Mi",
+                "ephemeral-storage": ""
+              },
+              "limits": {
+                "cpu": {
+                  "min": "",
+                  "burst": ""
+                },
+                "memory": "",
+                "ephemeral-storage": ""
+              }
+            },
+            "templates": {},
+            "pvc": {
+              "size": "10Gi",
+              "storageClass": "",
+              "snapshotClass": ""
+            }
+          }
+        }
+      },
+      "content": {
+        "storage": {
+          "stage": "",
+          "kind": "minio",
+          "gcloud": {
+            "credentialsFile": "",
+            "region": "",
+            "projectId": ""
+          },
+          "minio": {
+            "endpoint": "minio.gitpod.svc.cluster.local:9000",
+            "accessKey": "s3IjXXg0MFz2lW8FLkBX",
+            "accessKeyFile": "",
+            "secretKey": "7Fgi..JYaka-j.5ej8hV",
+            "secretKeyFile": "",
+            "region": "local",
+            "parallelUpload": 6
+          },
+          "blobQuota": 5368709120
+        }
+      },
+      "rpcServer": {
+        "addr": ":8080",
+        "tls": {
+          "ca": "/certs/ca.crt",
+          "crt": "/certs/tls.crt",
+          "key": "/certs/tls.key"
+        },
+        "ratelimits": {}
+      },
+      "imageBuilderProxy": {
+        "targetAddr": "image-builder-mk3.gitpod.svc.cluster.local:8080"
+      },
+      "pprof": {
+        "addr": "127.0.0.1:6060"
+      },
+      "prometheus": {
+        "addr": "127.0.0.1:9500"
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager
+  name: ws-manager
+  namespace: gitpod

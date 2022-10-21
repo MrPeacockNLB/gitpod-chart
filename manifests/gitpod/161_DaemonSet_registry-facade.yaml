@@ -1,0 +1,193 @@
+---
+# apps/v1/DaemonSet registry-facade
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: registry-facade
+  name: registry-facade
+  namespace: gitpod
+spec:
+  selector:
+    matchLabels:
+      app: gitpod
+      component: registry-facade
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: a7f7a82ccd9cd1e07ad3d6bc3eb807c17ebf7f2f6a01995168193f7f88e4d77c
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: registry-facade
+      name: registry-facade
+    spec:
+      containers:
+        - args:
+            - run
+            - /mnt/config/config.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+            - name: GRPC_GO_RETRY
+              value: "on"
+            - name: NODENAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /live
+              port: 8086
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: registry-facade
+          ports:
+            - containerPort: 32223
+              hostPort: 20000
+              name: registry
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /ready
+              port: 8086
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 2
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            privileged: false
+            runAsUser: 1000
+          volumeMounts:
+            - mountPath: /mnt/cache
+              name: cache
+            - mountPath: /mnt/config
+              name: config
+              readOnly: true
+            - mountPath: /ws-manager-client-tls-certs
+              name: ws-manager-client-tls-certs
+              readOnly: true
+            - mountPath: /mnt/pull-secret.json
+              name: pull-secret
+              subPath: .dockerconfigjson
+            - mountPath: /mnt/certificates
+              name: config-certificates
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+        - command:
+            - /app/ready-probe-labeler
+            - --label=gitpod.io/registry-facade_ready_ns_gitpod
+            - --probe-url=http://localhost:8086/ready
+          env:
+            - name: NODENAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /app/ready-probe-labeler
+                  - --label=gitpod.io/registry-facade_ready_ns_gitpod
+                  - --shutdown
+          name: node-labeler
+          resources: {}
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+        - command:
+            - bash
+            - -c
+            - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo 'OK'
+          image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-322d8016089cdf29e7abe59ddc3d4d1c50d72262
+          imagePullPolicy: IfNotPresent
+          name: update-ca-certificates
+          resources: {}
+          volumeMounts:
+            - mountPath: /ssl-certs
+              name: cacerts
+            - mountPath: /usr/local/share/ca-certificates/gitpod-ca.crt
+              name: gitpod-ca-certificate
+              subPath: ca.crt
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      serviceAccountName: registry-facade
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - emptyDir: {}
+          name: cache
+        - configMap:
+            name: registry-facade
+          name: config
+        - name: ws-manager-client-tls-certs
+          secret:
+            secretName: ws-manager-client-tls
+        - name: pull-secret
+          secret:
+            secretName: builtin-registry-auth
+        - hostPath:
+            path: /
+          name: hostfs
+        - emptyDir: {}
+          name: gitpod-ca-certificate
+        - emptyDir: {}
+          name: cacerts
+        - name: config-certificates
+          secret:
+            secretName: https-certificates
+  updateStrategy: {}
+status:
+  currentNumberScheduled: 0
+  desiredNumberScheduled: 0
+  numberMisscheduled: 0
+  numberReady: 0

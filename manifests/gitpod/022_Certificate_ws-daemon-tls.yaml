@@ -1,0 +1,28 @@
+---
+# cert-manager.io/v1/Certificate ws-daemon-tls
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-daemon
+  name: ws-daemon-tls
+  namespace: gitpod
+spec:
+  dnsNames:
+    - gitpod.gitpod
+    - ws-daemon.gitpod.svc
+    - ws-daemon
+    - wsdaemon
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: ws-daemon-tls
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: ws-daemon
+status: {}

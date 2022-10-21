@@ -1,0 +1,18 @@
+---
+# rbac.authorization.k8s.io/v1/RoleBinding image-builder-mk3
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: image-builder-mk3
+  name: image-builder-mk3
+  namespace: gitpod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-image-builder-mk3
+subjects:
+  - kind: ServiceAccount
+    name: image-builder-mk3

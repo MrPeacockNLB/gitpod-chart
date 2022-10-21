@@ -1,0 +1,126 @@
+---
+# apps/v1/Deployment ws-manager
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager
+  name: ws-manager
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ws-manager
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: cf2fd8a4dde6605d4e2798996c068e26d03ba6c786660135806ff3552ea2a4f8
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ws-manager
+      name: ws-manager
+      namespace: gitpod
+    spec:
+      containers:
+        - args:
+            - run
+            - --config
+            - /config/config.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+            - name: GRPC_GO_RETRY
+              value: "on"
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-db90d17e500dba3df59b92273d773919e0c3fdd2
+          imagePullPolicy: IfNotPresent
+          name: ws-manager
+          ports:
+            - containerPort: 8080
+              name: rpc
+          resources:
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - mountPath: /config
+              name: config
+              readOnly: true
+            - mountPath: /workspace-templates
+              name: workspace-template
+              readOnly: true
+            - mountPath: /ws-daemon-tls-certs
+              name: ws-daemon-tls-certs
+              readOnly: true
+            - mountPath: /certs
+              name: tls-certs
+              readOnly: true
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      enableServiceLinks: false
+      priorityClassName: system-node-critical
+      securityContext:
+        runAsUser: 31002
+      serviceAccountName: ws-manager
+      volumes:
+        - configMap:
+            name: ws-manager
+          name: config
+        - configMap:
+            name: workspace-templates
+          name: workspace-template
+        - name: ws-daemon-tls-certs
+          secret:
+            secretName: ws-daemon-tls
+        - name: tls-certs
+          secret:
+            secretName: ws-manager-tls
+status: {}

@@ -1,0 +1,23 @@
+---
+# v1/ConfigMap ide-service
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "server": {
+        "services": {
+          "grpc": {
+            "address": "0.0.0.0:9001"
+          }
+        }
+      },
+      "ideConfigPath": "/ide-config/config.json"
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-service
+  name: ide-service
+  namespace: gitpod

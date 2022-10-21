@@ -1,0 +1,18 @@
+---
+# rbac.authorization.k8s.io/v1/ClusterRoleBinding ide-metrics
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ide-metrics
+  name: ide-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ide-metrics
+subjects:
+  - kind: ServiceAccount
+    name: ide-metrics
+    namespace: gitpod

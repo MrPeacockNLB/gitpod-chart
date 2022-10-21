@@ -1,0 +1,39 @@
+---
+# v1/Service proxy
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{},"443": {}}}'
+    external-dns.alpha.kubernetes.io/hostname: gitpod.devops.hub.cloud.ilab-nlb.de,*.gitpod.devops.hub.cloud.ilab-nlb.de,*.ws.gitpod.devops.hub.cloud.ilab-nlb.de
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: proxy
+    kind: service
+  name: proxy
+  namespace: gitpod
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    - name: metrics
+      port: 9500
+      protocol: TCP
+      targetPort: 9500
+    - name: ssh
+      port: 22
+      protocol: TCP
+      targetPort: 22
+  selector:
+    app: gitpod
+    component: proxy
+  type: LoadBalancer
+status:
+  loadBalancer: {}

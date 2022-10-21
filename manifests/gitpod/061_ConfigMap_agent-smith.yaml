@@ -1,0 +1,26 @@
+---
+# v1/ConfigMap agent-smith
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "gitpodAPI": {
+        "hostURL": "https://gitpod.devops.hub.cloud.ilab-nlb.de",
+        "apiToken": ""
+      },
+      "enforcement": {},
+      "kubernetes": {
+        "enabled": true
+      },
+      "namespace": "gitpod",
+      "pprofAddr": "127.0.0.1:6060",
+      "prometheusAddr": "127.0.0.1:9500"
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: agent-smith
+  name: agent-smith
+  namespace: gitpod

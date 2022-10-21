@@ -1,0 +1,132 @@
+---
+# v1/ConfigMap ws-daemon
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "daemon": {
+        "runtime": {
+          "containerRuntime": {
+            "mounts": {
+              "proc": "/mnt/mounts"
+            },
+            "nodeToContainerMapping": {
+              "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/": "/mnt/node0"
+            },
+            "runtime": "containerd",
+            "containerd": {
+              "socket": "/mnt/containerd.sock"
+            }
+          },
+          "kubeconfig": "",
+          "namespace": "gitpod"
+        },
+        "content": {
+          "workingArea": "/mnt/workingarea",
+          "workingAreaNode": "/var/gitpod/workspaces",
+          "tempDir": "/tmp",
+          "storage": {
+            "stage": "",
+            "kind": "minio",
+            "gcloud": {
+              "credentialsFile": "",
+              "region": "",
+              "projectId": ""
+            },
+            "minio": {
+              "endpoint": "minio.gitpod.svc.cluster.local:9000",
+              "accessKey": "s3IjXXg0MFz2lW8FLkBX",
+              "accessKeyFile": "",
+              "secretKey": "7Fgi..JYaka-j.5ej8hV",
+              "secretKeyFile": "",
+              "region": "local",
+              "parallelUpload": 6
+            },
+            "blobQuota": 5368709120
+          },
+          "backup": {
+            "timeout": "5m0s",
+            "attempts": 3,
+            "period": "0s"
+          },
+          "userNamespaces": {
+            "fsShift": "FUSE"
+          },
+          "initializer": {
+            "command": "/app/content-initializer",
+            "args": null
+          }
+        },
+        "uidmapper": {
+          "procLocation": "/proc",
+          "rootUIDRange": {
+            "start": 33333,
+            "size": 1
+          },
+          "userUIDRange": [
+            {
+              "start": 100000,
+              "size": 70000
+            }
+          ]
+        },
+        "cpulimit": {
+          "enabled": false,
+          "totalBandwidth": "0",
+          "limit": "0",
+          "burstLimit": "0",
+          "controlPeriod": "15s",
+          "cgroupBasePath": "/mnt/node-cgroups"
+        },
+        "ioLimit": {
+          "writeBandwidthPerSecond": "0",
+          "readBandwidthPerSecond": "0",
+          "writeIOPS": 0,
+          "readIOPS": 0
+        },
+        "procLimit": 0,
+        "netlimit": {
+          "enabled": false,
+          "connectionsPerMinute": 3000,
+          "bucketSize": 1000
+        },
+        "hosts": {
+          "enabled": true,
+          "nodeHostsFile": "/mnt/hosts",
+          "fixedHosts": {
+            "registryFacade": [
+              {
+                "addr": "127.0.0.1",
+                "name": "reg.gitpod.devops.hub.cloud.ilab-nlb.de"
+              }
+            ]
+          }
+        },
+        "disk": {
+          "enabled": true,
+          "interval": "5m0s",
+          "locations": [
+            {
+              "path": "/mnt/workingarea",
+              "minBytesAvail": 21474836480
+            }
+          ]
+        }
+      },
+      "service": {
+        "address": "0.0.0.0:8080",
+        "tls": {
+          "caPath": "/certs/ca.crt",
+          "certPath": "/certs/tls.crt",
+          "keyPath": "/certs/tls.key"
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-daemon
+  name: ws-daemon
+  namespace: gitpod

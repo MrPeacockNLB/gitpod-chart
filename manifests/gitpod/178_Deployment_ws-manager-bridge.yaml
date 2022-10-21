@@ -1,0 +1,233 @@
+---
+# apps/v1/Deployment ws-manager-bridge
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager-bridge
+  name: ws-manager-bridge
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ws-manager-bridge
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 004bf3d0e28bd1d58c2d7b700f562d6dd65861836505d2b7efdbf45a95442f06
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ws-manager-bridge
+      name: ws-manager-bridge
+      namespace: gitpod
+    spec:
+      containers:
+        - env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+            - name: MESSAGEBUS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: rabbitmq
+            - name: MESSAGEBUS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: rabbitmq
+            - name: MESSAGEBUS_CA
+              valueFrom:
+                secretKeyRef:
+                  key: ca.crt
+                  name: messagebus-certificates-secret-core
+            - name: MESSAGEBUS_CERT
+              valueFrom:
+                secretKeyRef:
+                  key: tls.crt
+                  name: messagebus-certificates-secret-core
+            - name: MESSAGEBUS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: tls.key
+                  name: messagebus-certificates-secret-core
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mysql
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: mysql
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mysql
+            - name: DB_ENCRYPTION_KEYS
+              valueFrom:
+                secretKeyRef:
+                  key: encryptionKeys
+                  name: mysql
+            - name: WSMAN_BRIDGE_CONFIGPATH
+              value: /config/ws-manager-bridge.json
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415
+          imagePullPolicy: IfNotPresent
+          name: ws-manager-bridge
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          securityContext:
+            privileged: false
+            runAsUser: 31001
+          volumeMounts:
+            - mountPath: /config
+              name: config
+              readOnly: true
+            - mountPath: /ws-manager-client-tls-certs
+              name: ws-manager-client-tls-certs
+              readOnly: true
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+        - args:
+            - -v
+            - database
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mysql
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: mysql
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mysql
+            - name: DB_ENCRYPTION_KEYS
+              valueFrom:
+                secretKeyRef:
+                  key: encryptionKeys
+                  name: mysql
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          name: database-waiter
+          resources: {}
+          securityContext:
+            privileged: false
+            runAsUser: 31001
+        - args:
+            - -v
+            - messagebus
+          env:
+            - name: MESSAGEBUS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: rabbitmq
+            - name: MESSAGEBUS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: rabbitmq
+            - name: MESSAGEBUS_CA
+              valueFrom:
+                secretKeyRef:
+                  key: ca.crt
+                  name: messagebus-certificates-secret-core
+            - name: MESSAGEBUS_CERT
+              valueFrom:
+                secretKeyRef:
+                  key: tls.crt
+                  name: messagebus-certificates-secret-core
+            - name: MESSAGEBUS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: tls.key
+                  name: messagebus-certificates-secret-core
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          name: msgbus-waiter
+          resources: {}
+          securityContext:
+            privileged: false
+            runAsUser: 31001
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      serviceAccountName: ws-manager-bridge
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            name: ws-manager-bridge-config
+          name: config
+        - name: ws-manager-client-tls-certs
+          secret:
+            secretName: ws-manager-client-tls
+status: {}

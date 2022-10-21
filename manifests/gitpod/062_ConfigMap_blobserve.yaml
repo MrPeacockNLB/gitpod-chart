@@ -1,0 +1,90 @@
+---
+# v1/ConfigMap blobserve
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "blobserve": {
+        "port": 32224,
+        "timeout": "5s",
+        "repos": {
+          "eu.gcr.io/gitpod-core-dev/build/ide/code": {
+            "workdir": "/ide",
+            "replacements": [
+              {
+                "path": "/ide/out/vs/workbench/workbench.web.api.js",
+                "search": "vscode-cdn.net",
+                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+              },
+              {
+                "path": "/ide/out/vs/workbench/workbench.web.main.js",
+                "search": "vscode-cdn.net",
+                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+              },
+              {
+                "path": "/ide/out/vs/workbench/services/extensions/worker/extensionHostWorker.js",
+                "search": "vscode-cdn.net",
+                "replacement": "gitpod.devops.hub.cloud.ilab-nlb.de"
+              },
+              {
+                "path": "/ide/out/vs/workbench/workbench.web.api.js",
+                "search": "open-vsx.org",
+                "replacement": "open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de"
+              },
+              {
+                "path": "/ide/out/vs/workbench/workbench.web.main.js",
+                "search": "open-vsx.org",
+                "replacement": "open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de"
+              },
+              {
+                "path": "/ide/out/vs/workbench/workbench.web.main.js",
+                "search": "ide.gitpod.io/code/markeplace.json",
+                "replacement": "ide.gitpod.devops.hub.cloud.ilab-nlb.de/code/marketplace.json"
+              }
+            ],
+            "inlineStatic": [
+              {
+                "search": "${window.location.origin}",
+                "replacement": "."
+              },
+              {
+                "search": "value.startsWith(window.location.origin)",
+                "replacement": "value.startsWith(window.location.origin) || value.startsWith('${ide}')"
+              },
+              {
+                "search": "./out",
+                "replacement": "${ide}/out"
+              },
+              {
+                "search": "./node_modules",
+                "replacement": "${ide}/node_modules"
+              },
+              {
+                "search": "/_supervisor/frontend",
+                "replacement": "${supervisor}"
+              }
+            ]
+          },
+          "eu.gcr.io/gitpod-core-dev/build/supervisor": {
+            "workdir": "/.supervisor/frontend"
+          }
+        },
+        "allowAnyRepo": false,
+        "blobSpace": {
+          "location": "/mnt/cache/blobserve",
+          "maxSizeBytes": 1073741824
+        }
+      },
+      "dockerAuth": "/mnt/pull-secret.json",
+      "pprofAddr": "127.0.0.1:6060",
+      "prometheusAddr": "127.0.0.1:9500",
+      "readinessProbeAddr": ":8086"
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: blobserve
+  name: blobserve
+  namespace: gitpod

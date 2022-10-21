@@ -1,0 +1,97 @@
+---
+# batch/v1/Job migrations
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: migrations
+  name: migrations
+  namespace: gitpod
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: migrations
+      name: migrations
+      namespace: gitpod
+    spec:
+      containers:
+        - command:
+            - sh
+            - -c
+            - cd /app/node_modules/@gitpod/gitpod-db && yarn run wait-for-db && yarn run typeorm migration:show || true && yarn run typeorm migration:run
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mysql
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: mysql
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mysql
+            - name: DB_ENCRYPTION_KEYS
+              valueFrom:
+                secretKeyRef:
+                  key: encryptionKeys
+                  name: mysql
+          image: eu.gcr.io/gitpod-core-dev/build/db-migrations:commit-b07e48bb3f7ba554b14e10f05753f58b2ece5d82
+          imagePullPolicy: IfNotPresent
+          name: migrations
+          resources: {}
+      enableServiceLinks: false
+      initContainers:
+        - args:
+            - -v
+            - database
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mysql
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: mysql
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mysql
+            - name: DB_ENCRYPTION_KEYS
+              valueFrom:
+                secretKeyRef:
+                  key: encryptionKeys
+                  name: mysql
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-3073cfbd53d1f854de79dd87e4d0d6a9825da114
+          name: database-waiter
+          resources: {}
+          securityContext:
+            privileged: false
+            runAsUser: 31001
+      restartPolicy: Never
+      serviceAccountName: migrations
+  ttlSecondsAfterFinished: 60
+status: {}

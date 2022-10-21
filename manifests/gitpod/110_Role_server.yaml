@@ -1,0 +1,35 @@
+---
+# rbac.authorization.k8s.io/v1/Role server
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: server
+  name: server
+  namespace: gitpod
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/log
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - watch

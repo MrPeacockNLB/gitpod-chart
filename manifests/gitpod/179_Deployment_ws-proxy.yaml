@@ -1,0 +1,149 @@
+---
+# apps/v1/Deployment ws-proxy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-proxy
+  name: ws-proxy
+  namespace: gitpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ws-proxy
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: a94a017062a8cca347b7a1887d0cd702874b6cd2eaf116b8ca3170c3f2bba6a0
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ws-proxy
+      name: ws-proxy
+      namespace: gitpod
+    spec:
+      containers:
+        - args:
+            - run
+            - /config/config.json
+          env:
+            - name: GITPOD_DOMAIN
+              value: gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.devops.hub.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+            - name: JAEGER_DISABLED
+              value: "true"
+          image: eu.gcr.io/gitpod-core-dev/build/ws-proxy:commit-e0a1d0d8587a5253772b61aa6499d60177d9f415
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /healthz
+              port: 8086
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 2
+          name: ws-proxy
+          ports:
+            - containerPort: 8080
+              name: http-proxy
+            - containerPort: 9090
+              name: https-proxy
+            - containerPort: 9500
+              name: metrics
+          readinessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /readyz
+              port: 8086
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - mountPath: /config
+              name: config
+              readOnly: true
+            - mountPath: /ws-manager-client-tls-certs
+              name: ws-manager-client-tls-certs
+              readOnly: true
+            - mountPath: /mnt/certificates
+              name: config-certificates
+            - mountPath: /mnt/host-key
+              name: host-key
+        - args:
+            - --logtostderr
+            - --insecure-listen-address=[$(IP)]:9500
+            - --upstream=http://127.0.0.1:9500/
+          env:
+            - name: IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          name: kube-rbac-proxy
+          ports:
+            - containerPort: 9500
+              name: metrics
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePolicy: FallbackToLogsOnError
+      enableServiceLinks: false
+      priorityClassName: system-node-critical
+      securityContext:
+        runAsUser: 31002
+      serviceAccountName: ws-proxy
+      topologySpreadConstraints:
+        - labelSelector:
+            matchLabels:
+              app: gitpod
+              component: ws-proxy
+          maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+      volumes:
+        - configMap:
+            name: ws-proxy
+          name: config
+        - name: ws-manager-client-tls-certs
+          secret:
+            secretName: ws-manager-client-tls
+        - name: config-certificates
+          secret:
+            secretName: https-certificates
+        - name: host-key
+          secret:
+            secretName: ssh-gateway-host-key
+status: {}

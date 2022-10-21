@@ -1,0 +1,19 @@
+---
+# v1/PersistentVolumeClaim minio
+# Source: minio/charts/minio/templates/pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: minio
+  namespace: "gitpod"
+  labels:
+    app.kubernetes.io/name: minio
+    helm.sh/chart: minio-11.6.3
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"

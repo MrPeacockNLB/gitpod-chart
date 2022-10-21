@@ -1,0 +1,25 @@
+---
+# cert-manager.io/v1/Certificate builtin-registry-certs
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: docker-registry
+  name: builtin-registry-certs
+  namespace: gitpod
+spec:
+  dnsNames:
+    - registry.gitpod.svc.cluster.local
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: builtin-registry-certs
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: docker-registry
+status: {}

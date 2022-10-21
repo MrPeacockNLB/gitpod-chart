@@ -1,0 +1,28 @@
+---
+# cert-manager.io/v1/Certificate ws-manager-tls
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: ws-manager
+  name: ws-manager-tls
+  namespace: gitpod
+spec:
+  dnsNames:
+    - gitpod.gitpod
+    - ws-manager.gitpod.svc
+    - ws-manager
+    - ws-manager-dev
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: ws-manager-tls
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: ws-manager
+status: {}

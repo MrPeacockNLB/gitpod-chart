@@ -1,0 +1,26 @@
+---
+# networking.k8s.io/v1/NetworkPolicy image-builder-mk3
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: image-builder-mk3
+  name: image-builder-mk3
+  namespace: gitpod
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              component: server
+        - podSelector:
+            matchLabels:
+              component: ws-manager
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: image-builder-mk3
+  policyTypes:
+    - Ingress

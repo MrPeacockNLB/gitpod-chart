@@ -1,0 +1,20 @@
+---
+# networking.k8s.io/v1/NetworkPolicy content-service
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: content-service
+  name: content-service
+  namespace: gitpod
+spec:
+  ingress:
+    - {}
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: content-service
+  policyTypes:
+    - Ingress

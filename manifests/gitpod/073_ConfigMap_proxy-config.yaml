@@ -1,0 +1,84 @@
+---
+# v1/ConfigMap proxy-config
+apiVersion: v1
+data:
+  vhost.docker-registry: |-
+    https://registry.gitpod.devops.hub.cloud.ilab-nlb.de {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+
+        basicauth bcrypt "Docker Registry" {
+            ZG6xAu_hen2SFbbb0UlL JDJhJDEwJDlSam03dUZpT1RIS2RUNC90VmlVSy5wN3NoTkFkc0wwckhxS1E1cFh2Y0pNSWlUdHRJNHFl
+        }
+
+        reverse_proxy https://registry.gitpod.svc.cluster.local {
+            flush_interval -1
+            transport http {
+                tls_trusted_ca_certs /etc/caddy/registry-certs/ca.crt
+            }
+        }
+    }
+  vhost.empty: '# Placeholder to avoid errors loading files using a glob pattern'
+  vhost.ide-proxy: |
+    https://ide.gitpod.devops.hub.cloud.ilab-nlb.de {
+        import enable_log_debug
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy  {
+            to h2c://ide-proxy.gitpod.svc.cluster.local:80
+        }
+    }
+  vhost.minio: |-
+    https://minio.gitpod.devops.hub.cloud.ilab-nlb.de {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy minio.gitpod.svc.cluster.local:9001 {
+            flush_interval -1
+        }
+    }
+  vhost.open-vsx: |-
+    https://open-vsx.gitpod.devops.hub.cloud.ilab-nlb.de {
+        import enable_log_debug
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy  {
+            to openvsx-proxy.gitpod.svc.cluster.local:8080
+        }
+    }
+  vhost.payment-endpoint: |
+    https://payment.gitpod.devops.hub.cloud.ilab-nlb.de {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+        import debug_headers
+
+        reverse_proxy payment-endpoint.gitpod.svc.cluster.local:3002 {
+            import upstream_headers
+            import upstream_connection
+        }
+
+        @backend path /stripe/invoices/webhook
+        handle @backend {
+            reverse_proxy public-api-server.{$KUBE_NAMESPACE}.{$KUBE_DOMAIN}:9002 {
+                import upstream_headers
+                import upstream_connection
+            }
+        }
+
+        handle_errors {
+            respond "Internal Server Error" 500
+        }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitpod
+    component: proxy
+  name: proxy-config
+  namespace: gitpod
