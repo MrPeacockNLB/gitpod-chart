@@ -26,7 +26,7 @@ spec:
         app.kubernetes.io/instance: minio
         app.kubernetes.io/managed-by: Helm
       annotations:
-        checksum/credentials-secret: 4162b32ebcee434970e19f4b3a80045a769b272074496d636b93a0fc007a8c13
+        checksum/credentials-secret: ad266ae4a5e197886b71ce271d66111d5ba16cec4b7e72e6924a24b6f1124c55
     spec:
       serviceAccountName: minio
       securityContext:

@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: dfe93bb464eaa0e11e39ad8d0d4ab5c189442ba92086273d3e92529da8ccd6fb
+        gitpod.io/checksum_config: 20b30e522863b5faef943083fd7f6825c0eb6d83d645b67e9da92bf1a3a22516
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
@@ -218,7 +218,7 @@ spec:
             name: ws-daemon
           name: config
         - hostPath:
-            path: /run/k3s/containerd/containerd.sock
+            path: /run/containerd/containerd.sock
             type: Socket
           name: containerd-socket
         - hostPath:
