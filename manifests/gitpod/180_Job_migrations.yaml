@@ -19,6 +19,13 @@ spec:
       name: migrations
       namespace: gitpod
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
+                    operator: Exists
       containers:
         - command:
             - sh

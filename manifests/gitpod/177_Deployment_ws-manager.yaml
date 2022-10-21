@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: e33077ba2cb28efbb35375f0179148d64a4012dec8e4444c6f038bdc6f695986
+        gitpod.io/checksum_config: a663173b905b7528e0da70e08c3c01e56201437b6208a4e87faa16e4ca2bd3e8
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,6 +31,13 @@ spec:
       name: ws-manager
       namespace: gitpod
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
+                    operator: Exists
       containers:
         - args:
             - run

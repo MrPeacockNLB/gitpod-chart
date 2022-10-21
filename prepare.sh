@@ -20,8 +20,6 @@ yq e -i '.domain = "'"${DOMAIN}"'"' $CFG
 yq e -i '.certificate.name = "https-certificates"' $CFG
 
 yq e -i '.observability.logLevel = "trace"' $CFG
-#yq e -i '.workspace.runtime.containerdSocket = "/run/k3s/containerd/containerd.sock"' $CFG
-#yq e -i '.workspace.runtime.containerdRuntimeDir = "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/"' $CFG
 yq e -i '.workspace.pvc.size = "10Gi"' $CFG
 yq e -i '.workspace.resources.requests.memory = "500Mi"' $CFG
 yq e -i '.workspace.resources.requests.cpu = "500m"' $CFG
@@ -47,12 +45,12 @@ gitpod-installer render --use-experimental-config --config $CFG --output-split-f
 for f in tmp/gitpod/*.yaml; do yq -i '.' "$f"; done
 cp -r tmp/gitpod tmp/org
 
-#
-# remove all node selectors
-#
-for f in tmp/gitpod/*.yaml; do yq -i '(del .spec.template.spec.affinity)' "$f"; done
+# replace selector only if exists in YAML files
+LABEL="kubernetes.io/hostname:aks-central-90269204-vmss00002p"
+for f in tmp/gitpod/*.yaml; do  yq -i '(select(.spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) | .spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution) |= (del(.nodeSelectorTerms[]), .nodeSelectorTerms[0].matchExpressions[0].key = "'$LABEL'", .nodeSelectorTerms[0].matchExpressions[0].operator = "Exists") ' "$f"; done
 
 # dump diff
+diff -u tmp/org tmp/gitpod
 
 # finaly copy files
 cp -r tmp/gitpod manifests

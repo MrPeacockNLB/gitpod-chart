@@ -26,9 +26,16 @@ spec:
         app.kubernetes.io/instance: minio
         app.kubernetes.io/managed-by: Helm
       annotations:
-        checksum/credentials-secret: 29988a2deebc7ec0729c38c950bd30b80df3f70bb3531d83db41d13744ce2d7d
+        checksum/credentials-secret: be9577ea12ca909ec01f92feaaf64f21c2c731556dbaa4f8caee3666355b8cb4
     spec:
       serviceAccountName: minio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
+                    operator: Exists
       securityContext:
         fsGroup: 1001
       containers:

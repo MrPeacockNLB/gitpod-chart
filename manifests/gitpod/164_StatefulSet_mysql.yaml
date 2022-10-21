@@ -35,6 +35,13 @@ spec:
         app.kubernetes.io/component: primary
     spec:
       serviceAccountName: db
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
+                    operator: Exists
       securityContext:
         fsGroup: 1001
       initContainers:

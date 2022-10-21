@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 3300ee8c9ca52db401895664c3c53113e1fa6d8e866ff387abc6cdd55ba1acf4
+        gitpod.io/checksum_config: 0f5bad5cdb5ce75ec3fc8b282cfb68ecb41ca563643341545f8b8b88ec14e354
       creationTimestamp: null
       labels:
         app: gitpod
@@ -31,6 +31,13 @@ spec:
       name: server
       namespace: gitpod
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
+                    operator: Exists
       containers:
         - env:
             - name: GITPOD_DOMAIN
