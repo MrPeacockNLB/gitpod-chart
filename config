@@ -2,4 +2,4 @@
 NAMESPACE="gitpod"
 
 # Deploy to this Domain
-DOMAIN="gitpod.devops.hub.cloud.ilab-nlb.de"
+DOMAIN="gitpod.central.dev.cloud.ilab-nlb.de"
