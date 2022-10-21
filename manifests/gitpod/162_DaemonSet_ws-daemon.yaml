@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 5f68e372ca64013bacec668d185ed83baaaaf9f3f16b4a7353b9b09f57a02dc0
+        gitpod.io/checksum_config: 7821a72972e0d78f10a4057100f543b9c3e9c39bb370ebe258b1f99d0a48e22a
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
@@ -29,8 +29,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: kubernetes.io/hostname:aks-central-90269204-vmss00002p
-                    operator: Exists
+                  - key: kubernetes.io/hostname
+                    values:
+                      - aks-central-90269204-vmss00002p
+                    operator: In
       containers:
         - args:
             - run
