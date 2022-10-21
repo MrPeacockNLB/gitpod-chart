@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 20b30e522863b5faef943083fd7f6825c0eb6d83d645b67e9da92bf1a3a22516
+        gitpod.io/checksum_config: 74355cdec4f1dc2e575a481ca80182ab50f9befd2ca90d76ddfd3a22045c1e25
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
@@ -222,7 +222,7 @@ spec:
             type: Socket
           name: containerd-socket
         - hostPath:
-            path: /var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/
+            path: /var/lib/containerd/io.containerd.runtime.v2.task/k8s.io
             type: Directory
           name: node-fs0
         - hostPath:

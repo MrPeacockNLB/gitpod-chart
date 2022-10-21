@@ -11,7 +11,7 @@ data:
               "proc": "/mnt/mounts"
             },
             "nodeToContainerMapping": {
-              "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/": "/mnt/node0"
+              "/var/lib/containerd/io.containerd.runtime.v2.task/k8s.io": "/mnt/node0"
             },
             "runtime": "containerd",
             "containerd": {
@@ -35,9 +35,9 @@ data:
             },
             "minio": {
               "endpoint": "minio.gitpod.svc.cluster.local:9000",
-              "accessKey": "zqNEZyiXUhXQCBXylg9K",
+              "accessKey": "cinDYKmtIJAwSbppyFri",
               "accessKeyFile": "",
-              "secretKey": "omsGL_Whh_UnErl.2t.g",
+              "secretKey": "5ivXH2.iJ3B1X4oxio-E",
               "secretKeyFile": "",
               "region": "local",
               "parallelUpload": 6

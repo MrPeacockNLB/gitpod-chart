@@ -46,7 +46,7 @@ data:
           cpu: 500m
           memory: 500Mi
       runtime:
-        containerdRuntimeDir: /var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/
+        containerdRuntimeDir: /var/lib/containerd/io.containerd.runtime.v2.task/k8s.io
         containerdSocket: /run/containerd/containerd.sock
         fsShiftMethod: fuse
       timeoutDefault: 12h0m0s

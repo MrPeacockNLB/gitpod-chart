@@ -21,7 +21,7 @@ yq e -i '.certificate.name = "https-certificates"' $CFG
 
 yq e -i '.observability.logLevel = "trace"' $CFG
 #yq e -i '.workspace.runtime.containerdSocket = "/run/k3s/containerd/containerd.sock"' $CFG
-yq e -i '.workspace.runtime.containerdRuntimeDir = "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/"' $CFG
+#yq e -i '.workspace.runtime.containerdRuntimeDir = "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io/"' $CFG
 yq e -i '.workspace.pvc.size = "10Gi"' $CFG
 yq e -i '.workspace.resources.requests.memory = "500Mi"' $CFG
 yq e -i '.workspace.resources.requests.cpu = "500m"' $CFG
