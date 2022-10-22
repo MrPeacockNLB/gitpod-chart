@@ -24,6 +24,7 @@ yq e -i '.workspace.pvc.size = "10Gi"' $CFG
 yq e -i '.workspace.resources.requests.memory = "500Mi"' $CFG
 yq e -i '.workspace.resources.requests.cpu = "500m"' $CFG
 yq e -i '.workspace.timeoutDefault = "720m"' $CFG
+yq e -i '.objectStorage.resources.requests.memory = "1Gi"' $CFG
 
 #
 # Enable SSH Gateway

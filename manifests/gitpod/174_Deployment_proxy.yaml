@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: e035540b5b28bb6434c5527f2a492d83af63dee488e6356156ba3c3ee46f85c7
+        gitpod.io/checksum_config: 0ca98585ef707a2bc3978bafa1c49a59605fb2eea93ae4c8183c1f22b6bd9118
       creationTimestamp: null
       labels:
         app: gitpod

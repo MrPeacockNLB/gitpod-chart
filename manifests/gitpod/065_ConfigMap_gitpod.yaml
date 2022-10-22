@@ -26,7 +26,7 @@ data:
       inCluster: true
       resources:
         requests:
-          memory: 2Gi
+          memory: 1Gi
     observability:
       logLevel: trace
     openVSX:

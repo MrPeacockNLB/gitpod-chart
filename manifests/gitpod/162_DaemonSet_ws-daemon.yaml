@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 4890fa4fff20fe62a38f075e04998dccdcd5e1ad37c693dec8a38e2c20da002a
+        gitpod.io/checksum_config: 2b5a6edf5befc9239c95b7498883af3dc6e033c21ac8311bffebf34f944e7bde
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
@@ -90,7 +90,7 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 4Gi
+              memory: 1Gi
           securityContext:
             privileged: true
           volumeMounts:

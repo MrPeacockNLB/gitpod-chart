@@ -26,7 +26,7 @@ spec:
         app.kubernetes.io/instance: minio
         app.kubernetes.io/managed-by: Helm
       annotations:
-        checksum/credentials-secret: 2f64019cdb78936c5f6d4092fcb4d03e1c2ddab8dfe7914f35f31e373b611d1f
+        checksum/credentials-secret: 4067f0460ba8c9dbf724071180a14cdd4db555073f5554262dc40d5e50df2504
     spec:
       serviceAccountName: minio
       affinity:
@@ -99,7 +99,7 @@ spec:
           resources:
             limits: {}
             requests:
-              memory: 2Gi
+              memory: 1Gi
           volumeMounts:
             - name: data
               mountPath: /data
