@@ -37,7 +37,26 @@ yq e -i '.objectStorage.resources.requests.memory = "1Gi"' $CFG
 #   - kind: secret
 #     name: public-github
 #
-yq e -i '.authProviders[].kind = "secret" | .authProviders[].name = "public-github"' $CFG
+yq e -i '.authProviders[0].kind = "secret" | .authProviders[0].name = "public-github"' $CFG
+
+#
+#id: Public-GitHub
+#host: github.com
+#type: GitHub
+#oauth:
+#  clientId: xxx
+#  clientSecret: xxx
+#  callBackUrl: https://$DOMAIN/auth/github.com/callback
+#  settingsUrl: xxx
+CLIENT_ID="123456789"
+CLIENT_SECRET="geheim"
+CALLBACKURL="https://$DOMAIN/auth/github.com/callback"
+yq -n '.id = "public-github" | .host = "github.com" | .type = "GitHub"' > tmp/auth_provider-github.yaml
+yq e -i '.oauth.clientId = "'$CLIENT_ID'"' tmp/auth_provider-github.yaml
+yq e -i '.oauth.clientSecret = "'$CLIENT_SECRET'"' tmp/auth_provider-github.yaml
+yq e -i '.oauth.callBackUrl = "'$CALLBACKURL'"' tmp/auth_provider-github.yaml
+yq e -i '.oauth.settingsUrl = "'$SETTINGSURL'"' tmp/auth_provider-github.yaml
+kubectl create secret generic public-github -n $NAMESPACE --from-file=tmp/auth_provider-github.yaml --dry-run=client --output=yaml > manifests/auth_provider-github.yaml
 
 #
 # Enable SSH Gateway
