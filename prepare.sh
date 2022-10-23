@@ -27,6 +27,19 @@ yq e -i '.workspace.timeoutDefault = "720m"' $CFG
 yq e -i '.objectStorage.resources.requests.memory = "1Gi"' $CFG
 
 #
+# Configure public GitHub authentication provider
+# -----------------------------------------------
+#
+
+# append configuration settings for provider secret
+#
+# authProviders:
+#   - kind: secret
+#     name: public-github
+#
+yq e -i '.authProviders[].kind = "secret" | .authProviders[].name = "public-github"' $CFG
+
+#
 # Enable SSH Gateway
 # ------------------
 #
@@ -40,6 +53,11 @@ kubectl create secret generic ssh-gateway-host-key -n $NAMESPACE --from-file=tmp
 
 # append configuration settings for SSH gateway
 yq e -i '.sshGatewayHostKey.kind = "secret" | .sshGatewayHostKey.name = "ssh-gateway-host-key"' $CFG
+
+#
+# Renderphase
+# -----------
+#
 
 # render manifests and create copy for diffing
 gitpod-installer render --use-experimental-config --config $CFG --output-split-files tmp/gitpod -n $NAMESPACE
