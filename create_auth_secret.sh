@@ -33,4 +33,4 @@ yq e -i '.oauth.clientId = "'$CLIENT_ID'"' tmp/public-github.yaml
 yq e -i '.oauth.clientSecret = "'$CLIENT_SECRET'"' tmp/public-github.yaml
 yq e -i '.oauth.callBackUrl = "'$CALLBACKURL'"' tmp/public-github.yaml
 yq e -i '.oauth.settingsUrl = "'$SETTINGSURL'"' tmp/public-github.yaml
-kubectl create secret generic public-github -n $NAMESPACE --from-file=tmp/public-github.yaml --dry-run=client --output=yaml
+kubectl create secret generic public-github -n $NAMESPACE --from-file=tmp/public-github.yaml --dry-run=client --output=yaml > manifests/public-github.yaml
