@@ -3,3 +3,6 @@ NAMESPACE="gitpod"
 
 # Deploy to this Domain
 DOMAIN="gitpod.central.dev.cloud.ilab-nlb.de"
+
+# GitPods installer initial config.yaml
+CFG=tmp/config.yaml
