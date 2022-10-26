@@ -67,9 +67,7 @@ data:
         "purgeRetentionPeriodDays": 365,
         "purgeChunkLimit": 5000
       },
-      "authProviderConfigFiles": [
-        "/gitpod/auth-providers/public-github/provider"
-      ],
+      "authProviderConfigFiles": [],
       "incrementalPrebuilds": {
         "repositoryPasslist": [],
         "commitHistory": 100
@@ -80,7 +78,7 @@ data:
       },
       "oauthServer": {
         "enabled": true,
-        "jwtSecret": "VoReDtT6b-is-FAHlDZJ"
+        "jwtSecret": "uUWRA0hgn_-HzwmtuBlw"
       },
       "rateLimiter": {
         "groups": {

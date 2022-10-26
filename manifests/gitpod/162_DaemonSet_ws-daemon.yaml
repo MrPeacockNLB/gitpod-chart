@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: e1377f6beae920747f4feffa34b6ec85626af1c41a6d129252d7e1307c60738d
+        gitpod.io/checksum_config: 66ba8e44e1730a1cbff608bcff69c2926ca353ef6320102b549f4722ef8c4112
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:

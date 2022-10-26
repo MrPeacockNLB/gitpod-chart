@@ -44,7 +44,7 @@ yq e -i '.spec.dnsNames[0] = "'$DOMAIN'" | .spec.dnsNames[1] = "*.'$DOMAIN'" | .
 #   - kind: secret
 #     name: public-github
 #
-yq e -i '.authProviders[0].kind = "secret" | .authProviders[0].name = "public-github"' $CFG
+#yq e -i '.authProviders[0].kind = "secret" | .authProviders[0].name = "public-github"' $CFG
 
 #
 #id: Public-GitHub
@@ -55,8 +55,8 @@ yq e -i '.authProviders[0].kind = "secret" | .authProviders[0].name = "public-gi
 #  clientSecret: xxx
 #  callBackUrl: https://$DOMAIN/auth/github.com/callback
 #  settingsUrl: xxx
-CLIENT_ID="123456789"
-CLIENT_SECRET="geheim"
+CLIENT_ID="12343bd32ad04b0022a5a21c56789"
+CLIENT_SECRET="3c6dec1115838a64fb590022ce821336d0d865b8"
 CALLBACKURL="https://$DOMAIN/auth/github.com/callback"
 yq -n '.id = "public-github" | .host = "github.com" | .type = "GitHub"' > tmp/auth_provider-github.yaml
 yq e -i '.oauth.clientId = "'$CLIENT_ID'"' tmp/auth_provider-github.yaml
