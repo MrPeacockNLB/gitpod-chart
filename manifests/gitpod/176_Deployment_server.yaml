@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: d352ab3cf837870ea913d94cc71b791e95ccfccdd80cfee022b4a504cec4dd1a
+        gitpod.io/checksum_config: be3204ef70fc204c8fd5275f00e55f2b7e5d56489bf06d85aa1436f9b3804019
       creationTimestamp: null
       labels:
         app: gitpod
@@ -158,6 +158,9 @@ spec:
             - mountPath: /ws-manager-client-tls-certs
               name: ws-manager-client-tls-certs
               readOnly: true
+            - mountPath: /gitpod/auth-providers/public-github
+              name: auth-provider-0
+              readOnly: true
             - mountPath: /twilio-config
               name: twilio-secret-volume
               readOnly: true
@@ -268,6 +271,9 @@ spec:
         - name: ws-manager-client-tls-certs
           secret:
             secretName: ws-manager-client-tls
+        - name: auth-provider-0
+          secret:
+            secretName: public-github
         - name: twilio-secret-volume
           secret:
             optional: true

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  auth_provider-github.yaml: aWQ6IHB1YmxpYy1naXRodWIKaG9zdDogZ2l0aHViLmNvbQp0eXBlOiBHaXRIdWIKb2F1dGg6CiAgY2xpZW50SWQ6ICIxMjM0NTY3ODkiCiAgY2xpZW50U2VjcmV0OiBnZWhlaW0KICBjYWxsQmFja1VybDogaHR0cHM6Ly9naXRwb2QuY2VudHJhbC5kZXYuY2xvdWQuaWxhYi1ubGIuZGUvYXV0aC9naXRodWIuY29tL2NhbGxiYWNrCiAgc2V0dGluZ3NVcmw6ICIiCg==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: public-github
+  namespace: gitpod

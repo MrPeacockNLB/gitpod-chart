@@ -4,7 +4,9 @@ apiVersion: v1
 data:
   config.yaml: |
     apiVersion: v1
-    authProviders: []
+    authProviders:
+    - kind: secret
+      name: public-github
     blockNewUsers:
       enabled: false
       passlist: []
