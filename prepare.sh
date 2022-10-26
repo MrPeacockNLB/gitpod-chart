@@ -27,6 +27,13 @@ yq e -i '.workspace.timeoutDefault = "720m"' $CFG
 yq e -i '.objectStorage.resources.requests.memory = "1Gi"' $CFG
 
 #
+# Set DNS Names for certificate (for Cert-Manager) to request https-certificates secret
+#
+CERT=manifests/gitpod-certificate.yaml
+yq e -i '.spec.dnsNames[0] = "'$DOMAIN'" | .spec.dnsNames[1] = "*.'$DOMAIN'" | .spec.dnsNames[2] = "*.ws.'$DOMAIN'"' $CERT
+
+
+#
 # Configure public GitHub authentication provider
 # -----------------------------------------------
 #
