@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: c4ff58f2f95d21568a7547a6aeabff0ccc0e6d04741e278238de776fcf4fc1f6
+        gitpod.io/checksum_config: eb68659cf7fc2d4cb24bab831edee51ee95991bb6387c16188bf08edf394895a
       creationTimestamp: null
       labels:
         app: gitpod
@@ -83,7 +83,7 @@ spec:
               value: trace
             - name: PROXY_DOMAIN
               value: gitpod.central.dev.cloud.ilab-nlb.de
-          image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-be66c7b26c19a659278e7f86b46593623be57992
           imagePullPolicy: IfNotPresent
           name: proxy
           ports:

@@ -7,7 +7,7 @@ data:
       "manager": {
         "namespace": "gitpod",
         "schedulerName": "",
-        "seccompProfile": "workspace_default_release-2022.09.2.3.json",
+        "seccompProfile": "workspace_default_release-2022.10.0.16.json",
         "timeouts": {
           "startup": "1h0m0s",
           "initialization": "30m0s",
@@ -76,9 +76,9 @@ data:
           },
           "minio": {
             "endpoint": "minio.gitpod.svc.cluster.local:9000",
-            "accessKey": "ZSwDYsGjWn6pYPoCCjGT",
+            "accessKey": "c0li.BG2buVQ1vMQIBoH",
             "accessKeyFile": "",
-            "secretKey": "MBXRgQQIU4YLDCsnas6N",
+            "secretKey": "mPhX-OMNZ_MmQSR3mGFP",
             "secretKeyFile": "",
             "region": "local",
             "parallelUpload": 6

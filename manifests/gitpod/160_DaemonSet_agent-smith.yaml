@@ -62,7 +62,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/agent-smith:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/agent-smith:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           imagePullPolicy: IfNotPresent
           name: agent-smith
           resources:

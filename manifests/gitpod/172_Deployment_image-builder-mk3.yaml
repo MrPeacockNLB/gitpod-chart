@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 828e44d53b1005be6a74cbdda1d549c34ba1df5e595d93b1c3175aba11b8cbaf
+        gitpod.io/checksum_config: ccbe5580a0f092c5843e2d6f772e2c9424c66546ddeab8fefeb9171d73d44a20
       creationTimestamp: null
       labels:
         app: gitpod
@@ -62,7 +62,7 @@ spec:
               value: trace
             - name: JAEGER_DISABLED
               value: "true"
-          image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-c73212d2767b8501b7714d9929264bb869bcb0f6
           imagePullPolicy: IfNotPresent
           name: image-builder-mk3
           ports:

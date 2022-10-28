@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 6b21333785c2a32f8e3087dc16b2d939b28bd4cd10948ab55d954dc40ae6e2bf
+        gitpod.io/checksum_config: 2268014ba9490176ed352066730fc31aed502ca812ca1c67ff9f8bcfdc825e53
       creationTimestamp: null
       labels:
         app: gitpod
@@ -64,7 +64,7 @@ spec:
               value: "true"
             - name: GRPC_GO_RETRY
               value: "on"
-          image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-c73212d2767b8501b7714d9929264bb869bcb0f6
           imagePullPolicy: IfNotPresent
           name: ws-manager
           ports:

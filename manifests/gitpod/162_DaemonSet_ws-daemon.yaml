@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 66ba8e44e1730a1cbff608bcff69c2926ca353ef6320102b549f4722ef8c4112
+        gitpod.io/checksum_config: b22fddc5780574ca67c7b95a7246c321e5c17097c6470848665361e7f62c934a
         seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
       creationTimestamp: null
       labels:
@@ -62,7 +62,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-3e4f0002fdc215cfc3cef34eea83631ffdc7c66c
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
@@ -148,7 +148,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-3e4f0002fdc215cfc3cef34eea83631ffdc7c66c
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
@@ -181,8 +181,8 @@ spec:
         - command:
             - /bin/sh
             - -c
-            - cp -f /installer/workspace_default.json /mnt/dst/workspace_default_release-2022.09.2.3.json
-          image: eu.gcr.io/gitpod-core-dev/build/seccomp-profile-installer:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+            - cp -f /installer/workspace_default.json /mnt/dst/workspace_default_release-2022.10.0.16.json
+          image: eu.gcr.io/gitpod-core-dev/build/seccomp-profile-installer:commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366
           name: seccomp-profile-installer
           resources: {}
           securityContext:
@@ -194,7 +194,7 @@ spec:
             - sh
             - -c
             - "(\n\techo \"running sysctls\" &&\n\tsysctl -w net.core.somaxconn=4096 &&\n\tsysctl -w \"net.ipv4.ip_local_port_range=5000 65000\" &&\n\tsysctl -w \"net.ipv4.tcp_tw_reuse=1\" &&\n\tsysctl -w fs.inotify.max_user_watches=1000000 &&\n\tsysctl -w \"kernel.dmesg_restrict=1\" &&\n\tsysctl -w vm.unprivileged_userfaultfd=0\n) && echo \"done!\" || echo \"failed!\"\n"
-          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-3e4f0002fdc215cfc3cef34eea83631ffdc7c66c
           name: sysctl
           resources: {}
           securityContext:

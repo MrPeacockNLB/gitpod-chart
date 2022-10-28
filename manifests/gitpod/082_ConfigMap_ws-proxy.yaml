@@ -34,7 +34,7 @@ data:
         "workspacePodConfig": {
           "theiaPort": 23000,
           "supervisorPort": 22999,
-          "supervisorImage": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+          "supervisorImage": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-96916c5a955b991a94b23aabe5cdbd9fd7881dba"
         },
         "builtinPages": {
           "location": "/app/public"

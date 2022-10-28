@@ -4,7 +4,7 @@ apiVersion: v1
 data:
   config.json: |-
     {
-      "version": "release-2022.09.2.3",
+      "version": "release-2022.10.0.16",
       "hostUrl": "https://gitpod.central.dev.cloud.ilab-nlb.de",
       "installationShortname": "default",
       "devBranch": "",
@@ -22,6 +22,7 @@ data:
       "contentServiceAddr": "content-service.gitpod.svc.cluster.local:8080",
       "imageBuilderAddr": "image-builder-mk3.gitpod.svc.cluster.local:8080",
       "usageServiceAddr": "usage.gitpod.svc.cluster.local:9001",
+      "ideServiceAddr": "ide-service.gitpod.svc.cluster.local:9001",
       "maximumEventLoopLag": 0.35,
       "vsxRegistryUrl": "https://open-vsx.gitpod.central.dev.cloud.ilab-nlb.de",
       "chargebeeProviderOptionsFile": "/chargebee/providerOptions",
@@ -78,7 +79,7 @@ data:
       },
       "oauthServer": {
         "enabled": true,
-        "jwtSecret": "uUWRA0hgn_-HzwmtuBlw"
+        "jwtSecret": "wbSY0OAAv4hoPxNshcoc"
       },
       "rateLimiter": {
         "groups": {

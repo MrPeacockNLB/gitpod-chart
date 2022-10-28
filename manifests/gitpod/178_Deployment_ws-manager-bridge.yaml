@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 004bf3d0e28bd1d58c2d7b700f562d6dd65861836505d2b7efdbf45a95442f06
+        gitpod.io/checksum_config: 0e914e0812a18326e4683b1bb9291797f445025edc08fab4c27c0dd2e3709099
       creationTimestamp: null
       labels:
         app: gitpod
@@ -110,7 +110,7 @@ spec:
                   name: mysql
             - name: WSMAN_BRIDGE_CONFIGPATH
               value: /config/ws-manager-bridge.json
-          image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           imagePullPolicy: IfNotPresent
           name: ws-manager-bridge
           ports:
@@ -185,7 +185,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           name: database-waiter
           resources: {}
           securityContext:
@@ -220,7 +220,7 @@ spec:
                 secretKeyRef:
                   key: tls.key
                   name: messagebus-certificates-secret-core
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           name: msgbus-waiter
           resources: {}
           securityContext:

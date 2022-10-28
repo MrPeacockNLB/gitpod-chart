@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 31a1412e48008f7b72570a32f90fde768f4c13d2ac588f1e2575fc318a606299
+        gitpod.io/checksum_config: d847fd6768f4c545776665d1d9c03b630c73854d8877f9ff1ffde788d2600b64
       creationTimestamp: null
       labels:
         app: gitpod
@@ -119,8 +119,8 @@ spec:
             - name: SHLVL
               value: "1"
             - name: WSMAN_CFG_MANAGERS
-              value: WwogIHsKICAgICJuYW1lIjogImRlZmF1bHQiLAogICAgInVybCI6ICJkbnM6Ly8vd3MtbWFuYWdlcjo4MDgwIiwKICAgICJ0bHMiOiB7CiAgICAgICJjYSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL2NhLmNydCIsCiAgICAgICJjcnQiOiAiL3dzLW1hbmFnZXItY2xpZW50LXRscy1jZXJ0cy90bHMuY3J0IiwKICAgICAgImtleSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL3Rscy5rZXkiCiAgICB9LAogICAgInN0YXRlIjogImF2YWlsYWJsZSIsCiAgICAibWF4U2NvcmUiOiAxMDAsCiAgICAic2NvcmUiOiA1MCwKICAgICJnb3Zlcm4iOiB0cnVlLAogICAgImFkbWlzc2lvbkNvbnN0cmFpbnRzIjogbnVsbAogIH0KXQ==
-          image: eu.gcr.io/gitpod-core-dev/build/server:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+              value: WwogIHsKICAgICJuYW1lIjogImRlZmF1bHQiLAogICAgInVybCI6ICJkbnM6Ly8vd3MtbWFuYWdlcjo4MDgwIiwKICAgICJ0bHMiOiB7CiAgICAgICJjYSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL2NhLmNydCIsCiAgICAgICJjcnQiOiAiL3dzLW1hbmFnZXItY2xpZW50LXRscy1jZXJ0cy90bHMuY3J0IiwKICAgICAgImtleSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL3Rscy5rZXkiCiAgICB9LAogICAgInN0YXRlIjogImF2YWlsYWJsZSIsCiAgICAibWF4U2NvcmUiOiAxMDAsCiAgICAic2NvcmUiOiA1MCwKICAgICJnb3Zlcm4iOiB0cnVlLAogICAgImFkbWlzc2lvbkNvbnN0cmFpbnRzIjogbnVsbCwKICAgICJhcHBsaWNhdGlvbkNsdXN0ZXIiOiAiZGVmYXVsdCIKICB9Cl0=
+          image: eu.gcr.io/gitpod-core-dev/build/server:commit-9599a0246fe9bc480c7abc6efa2c4d3c250cba0d
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 6
@@ -215,7 +215,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           name: database-waiter
           resources: {}
           securityContext:
@@ -250,7 +250,7 @@ spec:
                 secretKeyRef:
                   key: tls.key
                   name: messagebus-certificates-secret-core
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           name: msgbus-waiter
           resources: {}
           securityContext:

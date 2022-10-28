@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        gitpod.io/checksum_config: 53928b264575cb870807876dae97a8d6fbec3dc44e86e2423e1fa8e15eee0a3b
+        gitpod.io/checksum_config: c32a9937b9f727e5232c57ad58b413e7d079618429635712d8972263fd59005d
       creationTimestamp: null
       labels:
         app: gitpod
@@ -63,7 +63,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-8c12d52ee98b03fd0864a8709aaf65999f150904
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
@@ -141,7 +141,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-8c12d52ee98b03fd0864a8709aaf65999f150904
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:

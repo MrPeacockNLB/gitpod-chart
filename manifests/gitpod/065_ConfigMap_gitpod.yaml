@@ -53,134 +53,146 @@ data:
   versions.json: |-
     {
       "versions": {
-        "version": "release-2022.09.2.3",
+        "version": "release-2022.10.0.16",
         "components": {
           "agentSmith": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "blobserve": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-8c12d52ee98b03fd0864a8709aaf65999f150904"
           },
           "caUpdater": {
             "version": "commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366"
           },
           "contentService": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "dashboard": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-c54b3bf6f17cc68c4f32c8301e8aa8620d6194d3"
           },
           "dbMigrations": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "dbSync": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "ideProxy": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-b20d03af53d9d89316a8603387b81e85cb003229"
           },
           "ideMetrics": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "ideService": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "imageBuilder": {
             "version": ""
           },
           "imageBuilderMk3": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
+            "version": "commit-c73212d2767b8501b7714d9929264bb869bcb0f6",
             "builderImage": {
-              "version": "cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+              "version": "73ea49bec3ed43432a96d8abb3e2824b7218152a"
             }
           },
           "installationTelemetry": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "integrationTests": {
             "version": ""
           },
           "openVSXProxy": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "paymentEndpoint": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "proxy": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-be66c7b26c19a659278e7f86b46593623be57992"
           },
           "public-api-server": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "registryFacade": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-8c12d52ee98b03fd0864a8709aaf65999f150904"
           },
           "server": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-9599a0246fe9bc480c7abc6efa2c4d3c250cba0d"
           },
           "serviceWaiter": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "usage": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "workspace": {
             "codeImage": {
-              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+              "version": "commit-8297f570ac1ace9507d7637dfdfed947fb7bb8ad"
             },
             "dockerUp": {
-              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+              "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
             },
             "supervisor": {
-              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+              "version": "commit-96916c5a955b991a94b23aabe5cdbd9fd7881dba"
             },
             "workspacekit": {
-              "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+              "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
             },
             "desktopIdeImages": {
               "codeDesktop": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "codeDesktopInsiders": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "intellij": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "intellijLatest": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
               },
               "goland": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "golandLatest": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
               },
               "pycharm": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "pycharmLatest": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
               },
               "phpstorm": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
               },
               "phpstormLatest": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
+              },
+              "rubymine": {
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
+              },
+              "rubymineLatest": {
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
+              },
+              "webstorm": {
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
+              },
+              "webstormLatest": {
+                "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a-latest"
               },
               "jbBackendPlugin": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-05c6b3fbe3b5cd716332cbac94c68865766cd5aa"
               },
               "jbBackendPluginLatest": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7-latest"
+                "version": "commit-71c8a1822cd79f7435de73f20c0058ef6026a31e-latest"
               }
             }
           },
           "wsDaemon": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7",
+            "version": "commit-3e4f0002fdc215cfc3cef34eea83631ffdc7c66c",
             "userNamespaces": {
               "seccompProfileInstaller": {
-                "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+                "version": "commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366"
               },
               "shiftfsModuleLoader": {
                 "version": "commit-313e75e99d5db6f5ac4eb71ecc25b8807fdd8366"
@@ -188,13 +200,13 @@ data:
             }
           },
           "wsManager": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-c73212d2767b8501b7714d9929264bb869bcb0f6"
           },
           "wsManagerBridge": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           },
           "wsProxy": {
-            "version": "commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7"
+            "version": "commit-73ea49bec3ed43432a96d8abb3e2824b7218152a"
           }
         }
       }

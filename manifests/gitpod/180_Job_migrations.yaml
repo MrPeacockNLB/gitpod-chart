@@ -57,7 +57,23 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/db-migrations:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+            - name: GITPOD_DOMAIN
+              value: gitpod.central.dev.cloud.ilab-nlb.de
+            - name: GITPOD_INSTALLATION_SHORTNAME
+              value: default
+            - name: GITPOD_REGION
+              value: local
+            - name: HOST_URL
+              value: https://gitpod.central.dev.cloud.ilab-nlb.de
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBE_DOMAIN
+              value: svc.cluster.local
+            - name: LOG_LEVEL
+              value: trace
+          image: eu.gcr.io/gitpod-core-dev/build/db-migrations:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           imagePullPolicy: IfNotPresent
           name: migrations
           resources: {}
@@ -92,7 +108,7 @@ spec:
                 secretKeyRef:
                   key: encryptionKeys
                   name: mysql
-          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           name: database-waiter
           resources: {}
           securityContext:

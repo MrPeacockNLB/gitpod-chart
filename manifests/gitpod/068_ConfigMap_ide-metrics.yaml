@@ -9,6 +9,121 @@ data:
         "ratelimits": null,
         "counterMetrics": [
           {
+            "name": "grpc_server_handled_total",
+            "help": "Total number of RPCs completed on the server, regardless of success or failure.",
+            "labels": [
+              {
+                "name": "grpc_method",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_service",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_type",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_code",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              }
+            ]
+          },
+          {
+            "name": "grpc_server_msg_received_total",
+            "help": "Total number of RPC stream messages received on the server.",
+            "labels": [
+              {
+                "name": "grpc_method",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_service",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_type",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              }
+            ]
+          },
+          {
+            "name": "grpc_server_msg_sent_total",
+            "help": "Total number of gRPC stream messages sent by the server.",
+            "labels": [
+              {
+                "name": "grpc_method",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_service",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_type",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              }
+            ]
+          },
+          {
+            "name": "grpc_server_started_total",
+            "help": "Total number of RPCs started on the server",
+            "labels": [
+              {
+                "name": "grpc_method",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_service",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_type",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              }
+            ]
+          },
+          {
             "name": "gitpod_supervisor_frontend_error_total",
             "help": "Total count of supervisor frontend client errors",
             "labels": [
@@ -648,12 +763,57 @@ data:
             ]
           }
         ],
+        "aggregatedHistogramMetrics": [
+          {
+            "name": "grpc_server_handling_seconds",
+            "help": "Histogram of response latency (seconds) of gRPC that had been application-level handled by the server.",
+            "labels": [
+              {
+                "name": "grpc_method",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_service",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              },
+              {
+                "name": "grpc_type",
+                "allowValues": [
+                  "*"
+                ],
+                "defaultValue": ""
+              }
+            ],
+            "buckets": [
+              0.005,
+              0.025,
+              0.05,
+              0.1,
+              0.5,
+              1,
+              2.5,
+              5,
+              30,
+              60,
+              120,
+              240,
+              600
+            ]
+          }
+        ],
         "errorReporting": {
           "allowComponents": [
             "supervisor-frontend",
             "vscode-workbench",
             "vscode-server",
-            "vscode-web"
+            "vscode-web",
+            "gitpod-cli"
           ]
         }
       },

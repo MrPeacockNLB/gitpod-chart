@@ -54,7 +54,7 @@ spec:
               value: svc.cluster.local
             - name: LOG_LEVEL
               value: trace
-          image: eu.gcr.io/gitpod-core-dev/build/openvsx-proxy:commit-cf5a72cd19f33a8d4c7ccf0301adc936905194f7
+          image: eu.gcr.io/gitpod-core-dev/build/openvsx-proxy:commit-73ea49bec3ed43432a96d8abb3e2824b7218152a
           imagePullPolicy: IfNotPresent
           name: openvsx-proxy
           ports:

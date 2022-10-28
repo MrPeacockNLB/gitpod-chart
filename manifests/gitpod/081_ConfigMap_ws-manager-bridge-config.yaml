@@ -18,7 +18,8 @@ data:
           "maxScore": 100,
           "score": 50,
           "govern": true,
-          "admissionConstraints": null
+          "admissionConstraints": null,
+          "applicationCluster": "default"
         }
       ],
       "clusterService": {
@@ -32,7 +33,9 @@ data:
       "timeouts": {
         "preparingPhaseSeconds": 3600,
         "buildingPhaseSeconds": 3600,
-        "unknownPhaseSeconds": 600
+        "unknownPhaseSeconds": 600,
+        "pendingPhaseSeconds": 3600,
+        "stoppingPhaseSeconds": 3600
       },
       "clusterSyncIntervalSeconds": 60
     }
